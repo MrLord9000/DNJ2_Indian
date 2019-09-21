@@ -3,29 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Linq;
 
 public class InventoryPotions : MonoBehaviour
 {
 #pragma warning disable
     [SerializeField] bool isFocused = false;
     [SerializeField] float focusTime = 4f;
-    [SerializeField] List<GameObject> uiSlots;
+    [SerializeField] List<Button> uiSlots;
     [SerializeField] Sprite frameSelected;
     [SerializeField] Sprite frameUnselected;
+    [SerializeField] Sprite emptySlotSprite;
 #pragma warning restore
 
     private int currentSlot = 0;
 
     private void Start()
     {
-        if(uiSlots == null)
-        {
-            uiSlots = new List<GameObject>(GetComponentsInChildren<GameObject>());
-        }
-        RefreshInventorySlots();
-        StartCoroutine(LoseFocusCoroutine());
+        uiSlots = GetComponentsInChildren<Button>().ToList();
+        Draw(null);
+        //RefreshInventorySlots();
+        //StartCoroutine(LoseFocusCoroutine());
     }
 
+    private void Update()
+    {
+    }
+    /*
     private void RefreshInventorySlots()
     {
         int i = 0;
@@ -42,7 +46,7 @@ public class InventoryPotions : MonoBehaviour
             i++;
         }
     }
-
+    */
     public void GetFocus()
     {
         isFocused = true;
@@ -101,5 +105,20 @@ public class InventoryPotions : MonoBehaviour
             yield return new WaitForSeconds(focusTime);
             LoseFocus();
         }
+    }
+    public void Draw(List<Potion> list)
+    {
+        int n = (list?.Count ?? 0);
+
+        for (int i = 0; i < n; i++)
+        {
+            uiSlots[i].image.sprite = list[i].Image;
+        }
+        for (int i = n; i < uiSlots.Count; i++)
+        {
+            Debug.Log(uiSlots[i] == null);
+            uiSlots[i].image.sprite = emptySlotSprite;
+        }
+
     }
 }

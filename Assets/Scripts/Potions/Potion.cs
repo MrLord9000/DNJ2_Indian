@@ -37,10 +37,6 @@ public class Potion : MonoBehaviour//, IInventoryItem
         get => action;
         private set => action = value;
     }
-    public void OnPickup()
-    {
-        //???
-    }
     public PotionColor Color
     {
         get => color;
