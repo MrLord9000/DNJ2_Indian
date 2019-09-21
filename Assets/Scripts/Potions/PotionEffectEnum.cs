@@ -10,7 +10,7 @@ public enum PotionEffect
     small,
     multiplication,
     halucination,
-    invis,
+    invisibility,
     confusion,
     twist,
     drunk,
