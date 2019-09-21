@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    
 #pragma warning disable
     [SerializeField] GameObject player;
     [SerializeField] Inventory inventory;
@@ -46,5 +47,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
+    }
+
+    private void ExtendInventory()
+    {
+        inventory.ExtendInventory();
     }
 }

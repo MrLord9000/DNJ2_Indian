@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   slots: 2
+  maxSlots: 9

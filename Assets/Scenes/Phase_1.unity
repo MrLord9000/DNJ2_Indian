@@ -1035,12 +1035,12 @@ PrefabInstance:
     - target: {fileID: 7612921325567169917, guid: 7b766e233b3ea854ebffeefa3ff5b656,
         type: 3}
       propertyPath: m_RefResolutionX
-      value: 192
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 7612921325567169917, guid: 7b766e233b3ea854ebffeefa3ff5b656,
         type: 3}
       propertyPath: m_RefResolutionY
-      value: 108
+      value: 216
       objectReference: {fileID: 0}
     - target: {fileID: 7612921325567169917, guid: 7b766e233b3ea854ebffeefa3ff5b656,
         type: 3}
@@ -2481,6 +2481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c6f2715a5d3d84abf732caa50709e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFocused: 0
+  focusTime: 4
 --- !u!1 &1677666714
 GameObject:
   m_ObjectHideFlags: 0

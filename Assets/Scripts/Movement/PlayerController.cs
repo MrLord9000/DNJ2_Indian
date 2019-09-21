@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         if (item != null)
         {
-            inventory.AddItem(item);
+            inventory.AddFlower(item);
             Debug.Log("<color=green>Picked up " + item + "</color>");
             item = null;
         }

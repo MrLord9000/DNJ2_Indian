@@ -42,9 +42,15 @@ TagManager:
   - name: Background
     uniqueID: 2208138829
     locked: 0
+  - name: Middleground
+    uniqueID: 1790717487
+    locked: 0
+  - name: Foreground
+    uniqueID: 2778022845
+    locked: 0
+  - name: UI
+    uniqueID: 4034142205
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Flower
-    uniqueID: 1790717487
     locked: 0
