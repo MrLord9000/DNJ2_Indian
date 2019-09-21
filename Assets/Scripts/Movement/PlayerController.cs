@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 #pragma warning disable
-    [SerializeField] private float speed = 1f;
-    [SerializeField] private Inventory inventory;
+    public float speed = 1f;
+    [SerializeField] Inventory inventory;
 #pragma warning restore
 
     private PlayerInput playerInput;

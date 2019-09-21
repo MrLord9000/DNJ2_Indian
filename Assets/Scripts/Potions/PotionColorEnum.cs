@@ -2,76 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
-public class Potion : MonoBehaviour
-{
-    SpriteRenderer sp;
-    [SerializeField] PotionColor color;
-    [SerializeField] PotionKind action;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        sp = GetComponent<SpriteRenderer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        sp.color = color.GetColor();
-    }
-
-    public void Set( Flower ingridient1, Flower ingridient2 )
-    {
-        color = PotionColorExtension.MixColor(ingridient1.Color, ingridient2.Color);
-    }
-
-    public PotionKind Action
-    {
-        get => action;
-        private set => action = value;
-    }
-}
-
-public enum PotionKind
-{
-    speed,
-    slow,
-    large,
-    smal,
-    multiplication,
-    halucination,
-    invis,
-    confusion,
-    twist,
-    drunk,
-    blackNWhite,
-    rain,
-    strength,
-    levitation,
-    poison
-}
 
 public enum PotionColor
 {
-    //flowers
-    red,
+    //TIER1
+    red = 0,
     yellow,
     blue,
-    black,
-    white,
-    //mixtures
+    green,
+    orange,
+    purple,
+    //TIER2
+    pink = 6,
     maroon,
     brown,
     cream,
     navy,
     aqua,
+    //TIER3
+    black = 12,
+    white,
     gray,
-    //both
-    pink,
-    orange,
-    purple,
-    green
 
 
 }
@@ -135,14 +86,14 @@ public static class PotionColorExtension
         return color;
     }
 
-    public static PotionColor MixColor (FlowerColor c1, FlowerColor c2)
+    public static PotionColor MixColor(FlowerColor c1, FlowerColor c2)
     {
-        if( c1 > c2)
+        if (c1 > c2)
         {
             (c1, c2) = (c2, c1);
         }
 
-        if( c1.IsBasic() && c2.IsBasic() )
+        if (c1.IsBasic() && c2.IsBasic())
         {
             if (c1 == c2)
             {
@@ -174,7 +125,7 @@ public static class PotionColorExtension
         }
         else
         {
-            if ( Random.Range(0,2) > 0.5f )
+            if (Random.Range(0, 2) > 0.5f)
             {
                 return c1.GetPotionColor();
             }
@@ -187,4 +138,3 @@ public static class PotionColorExtension
         return PotionColor.white;
     }
 }
-
