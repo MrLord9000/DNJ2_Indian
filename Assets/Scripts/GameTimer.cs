@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameTimer : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class GameTimer : MonoBehaviour
 
     public delegate void PhaseOneEndAction();
     public static event PhaseOneEndAction OnPhaseEnd;
+
+    private ColorGrading colorGrading;
+
+    private void Start()
+    {
+        colorGrading = GameManager.Instance.GetComponent<PostProcessVolume>().profile.GetSetting<ColorGrading>();
+    }
 
     public void StartTimer()
     {
@@ -33,7 +41,7 @@ public class GameTimer : MonoBehaviour
     {
         if (displayText != null)
         {
-            displayText.text = (time/60) + ":" + (time%60);
+            displayText.text = (time/60).ToString("00") + ":" + (time%60).ToString("00");
         }
     }
 }
