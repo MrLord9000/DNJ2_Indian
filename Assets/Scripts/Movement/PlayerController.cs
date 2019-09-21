@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour
 #pragma warning disable
     public float speed = 1f;
     [SerializeField] Inventory inventory;
+    [SerializeField] Animator animator;
+    [SerializeField] SpriteRenderer indicator;
 #pragma warning restore
 
     private PlayerInput playerInput;
     private Rigidbody2D rb;
     private Vector2 movement;
-    private IInventoryItem item;
+    private Flower item;
 
     private void Start()
     {
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         if (item != null)
         {
-            inventory.AddItem(item);
+            inventory.AddFlower(item);
             Debug.Log("<color=green>Picked up " + item + "</color>");
             item = null;
         }
@@ -40,19 +42,35 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        item = collision.GetComponent<IInventoryItem>();
+        item = collision.GetComponent<Flower>();
+        indicator.enabled = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<IInventoryItem>() == item)
+        if (collision.GetComponent<Flower>() == item)
         {
             item = null;
+            indicator.enabled = false;
         }
     }
 
     private void Update()
     {
         rb.AddForce(movement * speed);
+
+        if (rb.velocity.x > .05f || rb.velocity.y < -.05f)
+        {
+            animator.Play("Player_walk_front");
+        }
+        else if (rb.velocity.x < -.05f || rb.velocity.y > .05f)
+        {
+            animator.Play("Player_walk_back");
+        }
+        else
+        {
+            animator.Play("Player_idle");
+        }
+
     }
 }

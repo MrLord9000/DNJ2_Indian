@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestItem : MonoBehaviour, IInventoryItem
+public class TestItem : MonoBehaviour//, IInventoryItem
 {
     public string Name { get; } = "TestItem";
 
@@ -22,6 +22,11 @@ public class TestItem : MonoBehaviour, IInventoryItem
     [ContextMenu("SPEED!!!")]
     public void SPEED()
     {
-        PotionEffects.Invoke(PotionEffect.speed);
+        PotionEffects.Invoke(PotionEffect.multiplication);
+    }
+
+    private void OnMouseDown()
+    {
+        SPEED();
     }
 }

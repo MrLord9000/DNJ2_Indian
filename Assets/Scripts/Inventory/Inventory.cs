@@ -2,27 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Inventory", menuName = "Inventory", order = 1)]
-public class Inventory : ScriptableObject
+
+public class Inventory : MonoBehaviour
 {
+    [Header("Flower Inventory")]
     public int slots = 3;
-    public List<IInventoryItem> items = new List<IInventoryItem>();
+    public int maxFlowerSlots = 9;
+    public List<Flower> flowerItems = new List<Flower>();
+    [Space]
+    [Header("Potion Inventory")]
+    public int maxPotionSlots = 20;
+    public List<Potion> potionItems = new List<Potion>();
 
-    public event System.EventHandler<InventoryEventArgs> ItemAdded;
+    public delegate void InventoryExtendAction();
+    public static event InventoryExtendAction OnInventoryExtend;
 
-    public void AddItem(IInventoryItem item)
+    public void AddFlower(Flower flower)
     {
-        if(items.Count < slots && !items.Contains(item))
+        if(flowerItems.Count < slots)
         {
-            items.Add(item);
-            item.OnPickup();
-            //Destroy((item as MonoBehaviour).gameObject);
-
-            ItemAdded?.Invoke(this, new InventoryEventArgs(item));
+            flowerItems.Add(flower);
+            flower.OnPickup();
         }
         else
         {
-            Debug.Log("<color=blue>The inventory is full</color>");
+            Debug.Log("<color=yellow>The flower inventory is full</color>");
+        }
+    }
+
+    public void RemoveFlower(int i)
+    {
+        flowerItems.RemoveAt(i);
+    }
+
+    public void AddPotion(Potion potion)
+    {
+        if(potion != null)
+        {
+            potionItems.Add(potion);
+        }
+    }
+
+    public Potion RemovePotion(int i)
+    {
+        if (potionItems.Count > 0)
+        {
+            Potion potion = potionItems[i];
+            potionItems.RemoveAt(i);
+            return potion;
+        }
+        else
+        {
+            Debug.Log("<color=blue>The potion inventory is empty</color>");
+            return null;
+        }
+    }
+
+    [ContextMenu("Extend Inventory")]
+    public void ExtendInventory()
+    {
+        if(slots + 1 <= maxFlowerSlots)
+        {
+            slots += 1;
+            OnInventoryExtend();
         }
     }
 }

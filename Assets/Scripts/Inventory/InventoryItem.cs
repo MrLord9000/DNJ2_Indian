@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public interface IInventoryItem
 {
     string Name { get; }
-    FlowerColor Color { get; }
+    //FlowerColor Color { get; }
     Sprite Image { get; }
 
     GameObject gameObject { get; }
@@ -22,3 +22,4 @@ public class InventoryEventArgs : System.EventArgs
 
     public IInventoryItem Item; 
 }
+*/
