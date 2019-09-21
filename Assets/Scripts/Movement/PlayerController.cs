@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private Rigidbody2D rb;
     private Vector2 movement;
-    private IInventoryItem item;
+    private Flower item;
 
     private void Start()
     {
@@ -42,13 +42,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        item = collision.GetComponent<IInventoryItem>();
+        item = collision.GetComponent<Flower>();
         indicator.enabled = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<IInventoryItem>() == item)
+        if (collision.GetComponent<Flower>() == item)
         {
             item = null;
             indicator.enabled = true;

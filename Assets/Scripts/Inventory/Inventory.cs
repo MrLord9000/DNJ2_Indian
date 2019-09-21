@@ -30,7 +30,7 @@ public class Inventory : ScriptableObject
         if(flowerItems.Count < slots)
         {
             flowerItems.Add(flower);
-            OnAddFlower();
+            //OnAddFlower();
             flower.OnPickup();
 
             ItemAdded?.Invoke(this, new InventoryEventArgs(flower));
