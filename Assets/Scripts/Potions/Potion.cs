@@ -10,13 +10,13 @@ public class Potion : MonoBehaviour//, IInventoryItem
     [SerializeField] PotionColor color;
     [SerializeField] PotionEffect action;
     public static float duration = 20;
-
-    private void OnValidate()
+    /*
+    void OnValidate()
     {
         sRenderer = GetComponent<SpriteRenderer>();
         Color = color;
     }
-
+    */
     // Start is called before the first frame update
     void Awake()
     {
@@ -99,29 +99,20 @@ public class Potion : MonoBehaviour//, IInventoryItem
 
     private void OnMouseUp()
     {
-        if (GameManager.Instance.areFlowersDraggable)
+        List<Collider2D> contacts = new List<Collider2D>();
+        GetComponent<Collider2D>().OverlapCollider(new ContactFilter2D(), contacts);
+
+        foreach (Collider2D contatc in contacts)
         {
-            List<Collider2D> contacts = new List<Collider2D>();
-            GetComponent<Collider2D>().OverlapCollider(new ContactFilter2D(), contacts);
-
-            foreach (Collider2D contatc in contacts)
-            {
-                int? result = contatc?.gameObject?.GetComponent<Customer>()?.GivePotion(this);
-
-
-
-            }
-            transform.position = pos;
+            contatc?.gameObject?.GetComponent<Customer>()?.GivePotion(this);
         }
+        transform.position = pos;
     }
 
     private void OnMouseDrag()
     {
-        if (GameManager.Instance.areFlowersDraggable)
-        {
-            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position -= transform.position.z * Vector3.forward;
-        }
+        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position -= transform.position.z * Vector3.forward;
     }
     #endregion
 
