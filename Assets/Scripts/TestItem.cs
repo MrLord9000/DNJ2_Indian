@@ -18,4 +18,10 @@ public class TestItem : MonoBehaviour, IInventoryItem
     {
         Destroy(gameObject);
     }
+
+    [ContextMenu("SPEED!!!")]
+    public void SPEED()
+    {
+        PotionEffects.Invoke(PotionEffect.Speed);
+    }
 }
