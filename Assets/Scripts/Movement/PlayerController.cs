@@ -46,16 +46,18 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         item = collision.GetComponent<Flower>();
-        indicator.enabled = true;
+        item.Highlight();
+        //indicator.enabled = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<Flower>() == item)
         {
+            item.Unhighlight();
             item = null;
         }
-        indicator.enabled = false;
+        //indicator.enabled = false;
     }
 
     private void Update()

@@ -27,6 +27,16 @@ public class Flower : MonoBehaviour//, IInventoryItem
         }
     }
 
+    public void Highlight()
+    {
+        sRenderer.material.SetFloat("_OutlineWidth", 1f);
+    }
+
+    public void Unhighlight()
+    {
+        sRenderer.material.SetFloat("_OutlineWidth", 0f);
+    }
+
     public string Name
     {
         get => Color.ToString() + " flower";
