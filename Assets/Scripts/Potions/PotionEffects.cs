@@ -19,6 +19,7 @@ public static class PotionEffects
             case PotionEffect.invis:            GameManager.Instance.StartCoroutine( InvisPotionEffect() );             break;
             case PotionEffect.confusion:        GameManager.Instance.StartCoroutine( ConfusionPotionEffect() );         break;
             case PotionEffect.twist:            GameManager.Instance.StartCoroutine( TwistPotionEffect() );             break;
+            case PotionEffect.drunk:            GameManager.Instance.StartCoroutine( DrunkPotionEffect() );             break;
             case PotionEffect.blackNWhite:      GameManager.Instance.StartCoroutine( BlackNWhitePotionEffect() );       break;
             case PotionEffect.rain:             GameManager.Instance.StartCoroutine( RainPotionEffect() );              break;
             case PotionEffect.strength:         GameManager.Instance.StartCoroutine( StrengthPotionEffect() );          break;
@@ -52,7 +53,7 @@ public static class PotionEffects
         GameManager.Player.transform.localScale /= 0.5f;
     }
 
-    static float range = 15;
+    static float range = 0.5f;
     public static IEnumerator MultiplicationPotionEffect()
     {
         float time = 0;
@@ -73,8 +74,12 @@ public static class PotionEffects
             {
                 float x = Random.Range(-1f, 1f);
                 float y = Random.Range(-1f, 1f);
-                GameObject phantom = GameManager.Instantiate(GameManager.Player);
+                float distance = Random.Range(0, range);
+                GameObject phantom = GameManager.Instantiate(GameManager.Player, new Vector2(x,y).normalized * distance, new Quaternion() );
+                x = Random.Range(-1f, 1f);
+                y = Random.Range(-1f, 1f);
                 phantom.GetComponent<PlayerController>().enabled = false;
+                phantom.GetComponent<UnityEngine.InputSystem.PlayerInput>().enabled = false;
                 phantoms.Add(phantom);
             }
 
@@ -82,6 +87,11 @@ public static class PotionEffects
             yield return new WaitForSeconds(next);
         }
 
+        foreach (GameObject obj in phantoms)
+        {
+            GameManager.Destroy(obj);
+        }
+        phantoms.Clear();
     }
     public static IEnumerator HalucinationPotionEffect()
     {
@@ -106,12 +116,12 @@ public static class PotionEffects
         Camera.main.transform.rotation = new Quaternion();
     }
 
-    static float force = 5;
+    static float force = 15;
     public static IEnumerator DrunkPotionEffect()
     {
         float time = 0;
         float next;
-        while( time + ( next = Random.Range(1f,5f) ) < duration)
+        while ( time + ( next = Random.Range(1f,5f) ) < duration)
         {
             float x = Random.Range(-1f, 1f);
             float y = Random.Range(-1f, 1f);
