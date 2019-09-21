@@ -10,23 +10,21 @@ public static class PotionEffects
     {
         switch( effect )
         {
-            case PotionEffect.speed:            GameManager.Instance.StartCoroutine( SpeedPotionEffect() ); break;
-            case PotionEffect.slow:             GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.large:            GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.small:            GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.multiplication:   GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.halucination:     GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.invis:            GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.confusion:        GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.twist:            GameManager.Instance.StartCoroutine( SpeedPotionEffect() ); break;
-            case PotionEffect.blackNWhite:      GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.rain:             GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.strength:         GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.levitation:       GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-            case PotionEffect.poison:           GameManager.Instance.StartCoroutine(SpeedPotionEffect()); break;
-
-        }
-        
+            case PotionEffect.speed:            GameManager.Instance.StartCoroutine( SpeedPotionEffect() );             break;
+            case PotionEffect.slow:             GameManager.Instance.StartCoroutine( SlowPotionEffect() );              break;
+            case PotionEffect.large:            GameManager.Instance.StartCoroutine( LargePotionEffect() );             break;
+            case PotionEffect.small:            GameManager.Instance.StartCoroutine( SmallPotionEffect() );             break;
+            case PotionEffect.multiplication:   GameManager.Instance.StartCoroutine( MultiplicationPotionEffect() );    break;
+            case PotionEffect.halucination:     GameManager.Instance.StartCoroutine( HalucinationPotionEffect() );      break;
+            case PotionEffect.invis:            GameManager.Instance.StartCoroutine( InvisPotionEffect() );             break;
+            case PotionEffect.confusion:        GameManager.Instance.StartCoroutine( ConfusionPotionEffect() );         break;
+            case PotionEffect.twist:            GameManager.Instance.StartCoroutine( TwistPotionEffect() );             break;
+            case PotionEffect.blackNWhite:      GameManager.Instance.StartCoroutine( BlackNWhitePotionEffect() );       break;
+            case PotionEffect.rain:             GameManager.Instance.StartCoroutine( RainPotionEffect() );              break;
+            case PotionEffect.strength:         GameManager.Instance.StartCoroutine( StrengthPotionEffect() );          break;
+            case PotionEffect.levitation:       GameManager.Instance.StartCoroutine( LevitationPotionEffect() );        break;
+            case PotionEffect.poison:           GameManager.Instance.StartCoroutine( PoisonPotionEffect() );            break;
+        }        
     }
 
     public static IEnumerator SpeedPotionEffect()
@@ -37,17 +35,21 @@ public static class PotionEffects
     }
     public static IEnumerator SlowPotionEffect()
     {
-        GameManager.Player.GetComponent<PlayerController>().speed = 0.5f;
+        GameManager.Player.GetComponent<PlayerController>().speed *= 0.5f;
         yield return new WaitForSeconds(duration);
-        GameManager.Player.GetComponent<PlayerController>().speed = 1f;
+        GameManager.Player.GetComponent<PlayerController>().speed /= 0.5f;
     }
     public static IEnumerator LargePotionEffect()
     {
-        throw new System.NotImplementedException();
+        GameManager.Player.transform.localScale *= 1.5f;
+        yield return new WaitForSeconds(duration);
+        GameManager.Player.transform.localScale /= 1.5f;
     }
     public static IEnumerator SmallPotionEffect()
     {
-        throw new System.NotImplementedException();
+        GameManager.Player.transform.localScale *= 0.5f;
+        yield return new WaitForSeconds(duration);
+        GameManager.Player.transform.localScale /= 0.5f;
     }
     public static IEnumerator MultiplicationPotionEffect()
     {
@@ -55,42 +57,63 @@ public static class PotionEffects
     }
     public static IEnumerator HalucinationPotionEffect()
     {
+        //FX
         throw new System.NotImplementedException();
     }
     public static IEnumerator InvisPotionEffect()
     {
-        throw new System.NotImplementedException();
+        GameManager.Player.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(duration);
+        GameManager.Player.GetComponent<SpriteRenderer>().enabled = true;
     }
     public static IEnumerator ConfusionPotionEffect()
     {
+        //FX
         throw new System.NotImplementedException();
     }
     public static IEnumerator TwistPotionEffect()
     {
-        throw new System.NotImplementedException();
+        Camera.main.transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
+        yield return new WaitForSeconds(duration);
+        Camera.main.transform.rotation = new Quaternion();
     }
     public static IEnumerator DrunkPotionEffect()
     {
-        throw new System.NotImplementedException();
+        float time = 0;
+        float next;
+        while( time + ( next = Random.Range(1f,5f) ) < duration)
+        {
+            float x = Random.Range(-1f, 1f);
+            float y = Random.Range(-1f, 1f);
+            GameManager.Player.GetComponent<Rigidbody2D>().AddForce( new Vector2(x,y).normalized * 5,  ForceMode2D.Impulse);
+            time += next;
+            yield return new WaitForSeconds(next);
+        }
     }
     public static IEnumerator BlackNWhitePotionEffect()
     {
+        //FX
         throw new System.NotImplementedException();
     }
     public static IEnumerator RainPotionEffect()
     {
+        //FX
         throw new System.NotImplementedException();
     }
     public static IEnumerator StrengthPotionEffect()
     {
+        //inventory
         throw new System.NotImplementedException();
     }
     public static IEnumerator LevitationPotionEffect()
     {
-        throw new System.NotImplementedException();
+        GameManager.Player.GetComponent<Collider2D>().enabled = false;
+        yield return new WaitForSeconds(duration);
+        GameManager.Player.GetComponent<Collider2D>().enabled = true;
     }
     public static IEnumerator PoisonPotionEffect()
     {
+        //zmiana sceny
         throw new System.NotImplementedException();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class Potion : MonoBehaviour
+public class Potion : MonoBehaviour, IInventoryItem
 {
     SpriteRenderer sp;
     [SerializeField] PotionColor color;
@@ -30,6 +30,27 @@ public class Potion : MonoBehaviour
     {
         get => action;
         private set => action = value;
+    }
+    public void OnPickup()
+    {
+        //???
+    }
+    /*
+    public FlowerColor Color
+    {
+        get => color;
+        private set => color = value;
+    }
+    */
+    public string Name
+    {
+        get => color.ToString() + " flower";
+    }
+
+    public Sprite Image
+    {
+        get => sp.sprite;
+        set => sp.sprite = value;
     }
 
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IInventoryItem
 {
     string Name { get; }
-    FlowerColor Color { get; }
+    //FlowerColor Color { get; }
     Sprite Image { get; }
 
     GameObject gameObject { get; }
