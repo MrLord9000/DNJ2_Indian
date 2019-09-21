@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -10,39 +9,50 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Inventory inventory;
 #pragma warning restore
 
+    private PlayerInput playerInput;
     private Rigidbody2D rb;
+    private Vector2 movement;
+    private IInventoryItem item;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnMovement(InputAction.CallbackContext context)
     {
-        IInventoryItem item = collision.GetComponent<IInventoryItem>();
+        movement = context.ReadValue<Vector2>();
+    }
+
+    public void OnAction()
+    {
         if (item != null)
         {
             inventory.AddItem(item);
+            Debug.Log("<color=green>Picked up " + item + "</color>");
+            item = null;
+        }
+        else
+        {
+            Debug.Log("<color=blue>No item in range!</color>");
         }
     }
 
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+        item = collision.GetComponent<IInventoryItem>();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<IInventoryItem>() == item)
         {
-            rb.AddForce(Vector2.up.normalized * speed);
+            item = null;
         }
-        if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
-        {
-            rb.AddForce(Vector2.down.normalized * speed);
-        }
-        if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-        {
-            rb.AddForce(Vector2.left.normalized * speed);
-        }
-        if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
-        {
-            rb.AddForce(Vector2.right.normalized * speed);
-        }
+    }
+
+    private void Update()
+    {
+        rb.AddForce(movement * speed);
     }
 }

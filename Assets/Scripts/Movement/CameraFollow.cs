@@ -9,6 +9,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Transform objectToTrack;
     [SerializeField] private float accuracy = .1f;
     [SerializeField] private float speed = .5f;
+    [SerializeField] private bool snapToInt = false;
 #pragma warning restore
 
     private void FixedUpdate()
