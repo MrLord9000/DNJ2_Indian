@@ -35,21 +35,21 @@ public class Potion : MonoBehaviour
 
     public static new Dictionary<PotionColor, PotionEffect> effectMap = new Dictionary<PotionColor, PotionEffect>()
     {
-        { PotionColor.red,      PotionEffect.Speed },
-        { PotionColor.yellow,   PotionEffect.Slow },
-        { PotionColor.blue,     PotionEffect.Large },
-        { PotionColor.black,    PotionEffect.Small },
-        { PotionColor.white,    PotionEffect.Multiplication },
-        { PotionColor.maroon,   PotionEffect.Halucination },
-        { PotionColor.brown,    PotionEffect.Invis },
-        { PotionColor.cream,    PotionEffect.Confusion },
-        { PotionColor.navy,     PotionEffect.Twist },
-        { PotionColor.aqua,     PotionEffect.Drunk },
-        { PotionColor.gray,     PotionEffect.BlackNWhite },
-        { PotionColor.pink,     PotionEffect.Rain },
-        { PotionColor.orange,   PotionEffect.Strength },
-        { PotionColor.purple,   PotionEffect.Levitation },
-        { PotionColor.green,    PotionEffect.Poison }
+        { PotionColor.red,      PotionEffect.speed },
+        { PotionColor.yellow,   PotionEffect.slow },
+        { PotionColor.blue,     PotionEffect.large },
+        { PotionColor.black,    PotionEffect.small },
+        { PotionColor.white,    PotionEffect.multiplication },
+        { PotionColor.maroon,   PotionEffect.halucination },
+        { PotionColor.brown,    PotionEffect.invis },
+        { PotionColor.cream,    PotionEffect.confusion },
+        { PotionColor.navy,     PotionEffect.twist },
+        { PotionColor.aqua,     PotionEffect.drunk },
+        { PotionColor.gray,     PotionEffect.blackNWhite },
+        { PotionColor.pink,     PotionEffect.rain },
+        { PotionColor.orange,   PotionEffect.strength },
+        { PotionColor.purple,   PotionEffect.levitation },
+        { PotionColor.green,    PotionEffect.poison }
     };
 }
 
