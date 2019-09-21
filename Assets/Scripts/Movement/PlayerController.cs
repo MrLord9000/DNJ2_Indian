@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         if (collision.GetComponent<Flower>() == item)
         {
             item = null;
-            indicator.enabled = true;
+            indicator.enabled = false;
         }
     }
 
