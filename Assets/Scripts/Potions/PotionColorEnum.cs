@@ -6,21 +6,21 @@ using UnityEngine;
 public enum PotionColor
 {
     //TIER1
-    red = 1,
+    red = 0,
     yellow,
     blue,
     green,
     orange,
     purple,
     //TIER2
-    pink = 11,
+    pink = 6,
     maroon,
     brown,
     cream,
     navy,
     aqua,
     //TIER3
-    black = 101,
+    black = 12,
     white,
     gray,
 
