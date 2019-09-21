@@ -5,30 +5,30 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Potion : MonoBehaviour//, IInventoryItem
 {
-    SpriteRenderer sp;
+    SpriteRenderer sRenderer;
     [SerializeField] PotionColor color;
     [SerializeField] PotionEffect action;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        sp = GetComponent<SpriteRenderer>();
+        sRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        sp.color = color.GetColor();
+        //sRenderer.color = color.GetColor();
     }
 
     public void Set( Flower ingridient1, Flower ingridient2 )
     {
-        color = PotionColorExtension.MixColor(ingridient1.Color, ingridient2.Color);
+        Color = PotionColorExtension.MixColor(ingridient1.Color, ingridient2.Color);
         action = effectMap[color];
     }
     public void Set(PotionColor pc)
     {
-        color = pc;
+        Color = pc;
         action = effectMap[color];
     }
 
@@ -40,7 +40,11 @@ public class Potion : MonoBehaviour//, IInventoryItem
     public PotionColor Color
     {
         get => color;
-        private set => color = value;
+        private set
+        {
+            color = value;
+            sRenderer.color = color.GetColor();
+        }
     }
     
     public string Name
@@ -50,8 +54,8 @@ public class Potion : MonoBehaviour//, IInventoryItem
 
     public Sprite Image
     {
-        get => sp.sprite;
-        set => sp.sprite = value;
+        get => sRenderer.sprite;
+        set => sRenderer.sprite = value;
     }
 
 

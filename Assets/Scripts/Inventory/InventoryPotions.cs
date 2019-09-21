@@ -113,10 +113,11 @@ public class InventoryPotions : MonoBehaviour
         for (int i = 0; i < n; i++)
         {
             uiSlots[i].image.sprite = list[i].Image;
+            uiSlots[i].image.color = list[i].Color.GetColor();
+            uiSlots[i].onClick.AddListener(()=>PotionEffects.Invoke(list[i].Action));
         }
         for (int i = n; i < uiSlots.Count; i++)
         {
-            Debug.Log(uiSlots[i] == null);
             uiSlots[i].image.sprite = emptySlotSprite;
         }
 

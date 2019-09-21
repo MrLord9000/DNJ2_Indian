@@ -9,6 +9,7 @@ public static class PotionEffects
 
     public static void Invoke( PotionEffect effect )
     {
+        Debug.Log(effect + " potion");
         switch( effect )
         {
             case PotionEffect.speed:            GameManager.Instance.StartCoroutine( SpeedPotionEffect() );             break;
