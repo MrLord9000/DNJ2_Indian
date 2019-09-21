@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public static class PotionEffects
 {
@@ -95,8 +96,20 @@ public static class PotionEffects
     }
     public static IEnumerator HalucinationPotionEffect()
     {
-        //FX
-        throw new System.NotImplementedException();
+        ColorGrading colorGrading = GameManager.Instance.GetComponent<PostProcessVolume>().profile.GetSetting<ColorGrading>();
+        for (int i = 0; i < 720; i++)
+        {
+            if(colorGrading.hueShift.value < 180)
+            {
+                colorGrading.hueShift.value += 1f;
+            }
+            else
+            {
+                colorGrading.hueShift.value = -180f;
+            }
+            yield return new WaitForSeconds(.02f);
+        }
+        colorGrading.hueShift.value = 0;
     }
     public static IEnumerator InvisPotionEffect()
     {
