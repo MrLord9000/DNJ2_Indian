@@ -20,15 +20,28 @@ public class InventoryPotions : MonoBehaviour
 
     private void Start()
     {
-        uiSlots = GetComponentsInChildren<Button>().ToList();
+        uiSlots = GetComponentsInChildren<Button>().Reverse().ToList();
         Draw(null);
         //RefreshInventorySlots();
         //StartCoroutine(LoseFocusCoroutine());
     }
-
-    private void Update()
+    public void Draw(List<Potion> list)
     {
+        int n = (list?.Count ?? 0);
+
+        for (int i = 0; i < n; i++)
+        {
+            uiSlots[i].image.sprite = list[i].Image;
+            uiSlots[i].image.color = list[i].Color.GetColor();
+            //uiSlots[i].onClick.RemoveAllListeners();
+            uiSlots[i].onClick.AddListener(() => list[i].Use());
+        }
+        for (int i = n; i < uiSlots.Count; i++)
+        {
+            uiSlots[i].image.sprite = emptySlotSprite;
+        }
     }
+
     /*
     private void RefreshInventorySlots()
     {
@@ -46,19 +59,19 @@ public class InventoryPotions : MonoBehaviour
             i++;
         }
     }
-    */
+    
     public void GetFocus()
     {
         isFocused = true;
         GameManager.Inventory.potionItems[currentSlot].GetComponent<Image>().sprite = frameSelected;
     }
-
+    
     public void LoseFocus()
     {
         isFocused = false;
         GameManager.Inventory.potionItems[currentSlot].GetComponent<Image>().sprite = frameUnselected;
     }
-
+    
     public void ChangeElement(InputAction.CallbackContext context)
     {
         float way = context.ReadValue<float>();
@@ -106,20 +119,5 @@ public class InventoryPotions : MonoBehaviour
             LoseFocus();
         }
     }
-    public void Draw(List<Potion> list)
-    {
-        int n = (list?.Count ?? 0);
-
-        for (int i = 0; i < n; i++)
-        {
-            uiSlots[i].image.sprite = list[i].Image;
-            uiSlots[i].image.color = list[i].Color.GetColor();
-            uiSlots[i].onClick.AddListener(()=>PotionEffects.Invoke(list[i].Action));
-        }
-        for (int i = n; i < uiSlots.Count; i++)
-        {
-            uiSlots[i].image.sprite = emptySlotSprite;
-        }
-
-    }
+    */
 }

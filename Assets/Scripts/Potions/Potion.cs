@@ -32,6 +32,11 @@ public class Potion : MonoBehaviour//, IInventoryItem
         action = effectMap[color];
     }
 
+    public void Use()
+    {
+        PotionEffects.Invoke(action);
+    }
+
     public PotionEffect Action
     {
         get => action;

@@ -13,9 +13,15 @@ public class Inventory : MonoBehaviour
     [Header("Potion Inventory")]
     public int potionSlots = 20;
     public List<Potion> potionItems = new List<Potion>();
+    InventoryPotions potionsGUI;
 
     public delegate void InventoryExtendAction();
     public static event InventoryExtendAction OnInventoryExtend;
+
+    private void Awake()
+    {
+        potionsGUI = FindObjectOfType<InventoryPotions>();
+    }
 
     public void AddFlower(Flower flower)
     {
@@ -40,7 +46,7 @@ public class Inventory : MonoBehaviour
         if(potionItems.Count < potionSlots)
         {
             potionItems.Add(potion);
-            FindObjectOfType<InventoryPotions>().Draw(potionItems);
+            potionsGUI.Draw(potionItems);
         }
     }
 
