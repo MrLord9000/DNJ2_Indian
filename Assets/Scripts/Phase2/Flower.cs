@@ -48,11 +48,15 @@ public class Flower : MonoBehaviour//, IInventoryItem
 
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         collider = GetComponent<BoxCollider2D>();
         sRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         List<Collider2D> results = new List<Collider2D>();
         collider.OverlapCollider( new ContactFilter2D().NoFilter(),results);
         foreach(Collider2D result in results){

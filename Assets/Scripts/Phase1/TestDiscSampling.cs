@@ -20,14 +20,14 @@ public class TestDiscSampling : MonoBehaviour
     	points = PoissonDiscSampling.GeneratePoints(radius,regionSize,regionShift,rejectionSamples);
     }
 
-    /*void  OnDrawGizmos(){
+    void  OnDrawGizmos(){
     	Gizmos.DrawWireSphere(regionSize/2,regionSize.x/2);
     	if (points != null){
     		foreach(Vector2 point in points){
     			Gizmos.DrawSphere(point,displayRadius);
     		}
     	}
-    }*/
+    }
 
     FlowerColor colorMyFlower(string colorGroup){
     	float chanceForMix = Random.value;
@@ -46,6 +46,11 @@ public class TestDiscSampling : MonoBehaviour
     			if(chanceForMix<0.9f) return FlowerColor.blue;
     			else if(chanceForMix<0.95f) return FlowerColor.green;
     			else return FlowerColor.purple;
+    		case "black":
+    			return FlowerColor.black;
+    		case "white":
+    			if(chanceForMix<0.95f) return FlowerColor.pink;
+    			else return FlowerColor.white;
     		default:
     			 return FlowerColor.white;
     	}
@@ -54,7 +59,7 @@ public class TestDiscSampling : MonoBehaviour
     void Start(){
     	OnValidate();
     	foreach(Vector2 point in points){
-    		GameObject created_flower = Instantiate(flower,new Vector3(point.x,point.y,0f),Quaternion.identity);
+    		GameObject created_flower = Instantiate(flower,new Vector3(point.x,point.y,0f),Quaternion.identity,transform);
     		created_flower.GetComponent<Flower>().Color = colorMyFlower(colorGroup);
     	}
     }
