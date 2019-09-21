@@ -16,7 +16,15 @@ public class Flower : MonoBehaviour, IInventoryItem
     public FlowerColor Color
     {
         get => color;
-        private set => color = value;
+        private set
+        {
+            color = value;
+            string path1 = "Sprites/Flowers/flower_" + color + "_1";
+            string path2 = "Sprites/Flowers/flower_" + color + "_2";       
+            Sprite pic = Resources.Load<Sprite>( Random.Range(0,2) == 1 ? path1 : path2 ) ?? Resources.Load<Sprite>(path1);
+            sRenderer.sprite = pic;
+            collider.size = new Vector3(pic.textureRect.width, pic.textureRect.height) / pic.pixelsPerUnit;
+        }
     }
 
     public string Name
@@ -32,8 +40,11 @@ public class Flower : MonoBehaviour, IInventoryItem
 
     void OnValidate()
     {
+        collider = GetComponent<BoxCollider2D>();
+        sRenderer = GetComponent<SpriteRenderer>();
         //TYMCZASOWE
-        GetComponent<SpriteRenderer>().color = color.GetColor();
+        //GetComponent<SpriteRenderer>().color = color.GetColor();
+        Color = color;
 
     }
 
