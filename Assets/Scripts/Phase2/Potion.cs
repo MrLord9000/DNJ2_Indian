@@ -6,7 +6,8 @@ using UnityEngine;
 public class Potion : MonoBehaviour
 {
     SpriteRenderer sp;
-    public PotionColor color;
+    [SerializeField] PotionColor color;
+    [SerializeField] PotionKind action;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,31 @@ public class Potion : MonoBehaviour
     {
         color = PotionColorExtension.MixColor(ingridient1.Color, ingridient2.Color);
     }
+
+    public PotionKind Action
+    {
+        get => action;
+        private set => action = value;
+    }
+}
+
+public enum PotionKind
+{
+    speed,
+    slow,
+    large,
+    smal,
+    multiplication,
+    halucination,
+    invis,
+    confusion,
+    twist,
+    drunk,
+    blackNWhite,
+    rain,
+    strength,
+    levitation,
+    poison
 }
 
 public enum PotionColor
@@ -161,3 +187,4 @@ public static class PotionColorExtension
         return PotionColor.white;
     }
 }
+
