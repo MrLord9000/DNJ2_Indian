@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class Potion : MonoBehaviour, IInventoryItem
+public class Potion : MonoBehaviour//, IInventoryItem
 {
     SpriteRenderer sp;
     [SerializeField] PotionColor color;
@@ -54,7 +54,7 @@ public class Potion : MonoBehaviour, IInventoryItem
     }
 
 
-    public static new Dictionary<PotionColor, PotionEffect> effectMap = new Dictionary<PotionColor, PotionEffect>()
+    public static Dictionary<PotionColor, PotionEffect> effectMap = new Dictionary<PotionColor, PotionEffect>()
     {
         { PotionColor.red,      PotionEffect.speed },
         { PotionColor.yellow,   PotionEffect.slow },

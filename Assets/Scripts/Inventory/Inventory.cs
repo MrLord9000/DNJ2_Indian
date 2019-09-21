@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Inventory", menuName = "Inventory", order = 1)]
-public class Inventory : ScriptableObject
+
+public class Inventory : MonoBehaviour
 {
     [Header("Flower Inventory")]
     public int slots = 3;
@@ -14,26 +14,15 @@ public class Inventory : ScriptableObject
     public int maxPotionSlots = 20;
     public List<Potion> potionItems = new List<Potion>();
 
-    public event System.EventHandler<InventoryEventArgs> ItemAdded;
-
     public delegate void InventoryExtendAction();
     public static event InventoryExtendAction OnInventoryExtend;
-
-    public delegate void AddFlowerAction();
-    public static event AddFlowerAction OnAddFlower;
-
-    public delegate void UsePotionAction();
-    public static event UsePotionAction OnUsePotion;
 
     public void AddFlower(Flower flower)
     {
         if(flowerItems.Count < slots)
         {
             flowerItems.Add(flower);
-            //OnAddFlower();
             flower.OnPickup();
-
-            ItemAdded?.Invoke(this, new InventoryEventArgs(flower));
         }
         else
         {
@@ -41,20 +30,31 @@ public class Inventory : ScriptableObject
         }
     }
 
-    public void UsePotion(int i)
+    public void RemoveFlower(int i)
     {
-        Potion potion = potionItems[i];
-        if (potionItems.Count < maxPotionSlots)
+        flowerItems.RemoveAt(i);
+    }
+
+    public void AddPotion(Potion potion)
+    {
+        if(potion != null)
         {
             potionItems.Add(potion);
-            OnUsePotion();
-            potion.OnPickup();
+        }
+    }
 
-            ItemAdded?.Invoke(this, new InventoryEventArgs(potion));
+    public Potion RemovePotion(int i)
+    {
+        if (potionItems.Count > 0)
+        {
+            Potion potion = potionItems[i];
+            potionItems.RemoveAt(i);
+            return potion;
         }
         else
         {
-            Debug.Log("<color=blue>The potion inventory is full</color>");
+            Debug.Log("<color=blue>The potion inventory is empty</color>");
+            return null;
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class InventoryFlowers : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class InventoryFlowers : MonoBehaviour
     [SerializeField] bool isFocused = false;
     [SerializeField] float focusTime = 4f;
     [SerializeField] List<Button> uiSlots;
+    [SerializeField] Sprite emptySlotSprite;
 #pragma warning restore
 
     private int currentSlot = 0;
@@ -45,4 +47,28 @@ public class InventoryFlowers : MonoBehaviour
             i++;
         }
     }
+
+    void Start()
+    {
+        uiSlots = GetComponentsInChildren<Button>().ToList();
+        Draw(null);
+    }
+
+    public void Draw( List<Flower> list )
+    {
+        int n = (list?.Count ?? 0);
+
+        Debug.Log("aaa");
+        for (int i = 0; i < n; i++)
+        {
+            uiSlots[i].image.sprite = list[i].Image;
+        }
+        for (int i = n; i < uiSlots.Count; i++)
+        {
+            uiSlots[i].image.sprite = emptySlotSprite;
+            Debug.Log("cleared" + i);
+        }
+
+    }
+
 }

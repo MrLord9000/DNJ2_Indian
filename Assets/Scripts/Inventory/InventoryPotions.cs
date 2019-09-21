@@ -16,16 +16,6 @@ public class InventoryPotions : MonoBehaviour
 
     private int currentSlot = 0;
 
-    private void OnEnable()
-    {
-        Inventory.OnUsePotion += OnUsePotion;
-    }
-
-    private void OnDisable()
-    {
-        Inventory.OnUsePotion -= OnUsePotion;
-    }
-
     private void Start()
     {
         if(uiSlots == null)
@@ -53,12 +43,6 @@ public class InventoryPotions : MonoBehaviour
         }
     }
 
-    private void OnUsePotion()
-    {
-        GameManager.Inventory.UsePotion(currentSlot);
-        RefreshInventorySlots();
-    }
-
     public void GetFocus()
     {
         isFocused = true;
@@ -73,9 +57,9 @@ public class InventoryPotions : MonoBehaviour
 
     public void ChangeElement(InputAction.CallbackContext context)
     {
-        //float way = context.ReadValue<float>();
-        //if (way > 0) NextElement();
-        //else if (way < 0) PreviousElement();
+        float way = context.ReadValue<float>();
+        if (way == 1) NextElement();
+        else if (way == -1) PreviousElement();
     }
 
     public void NextElement()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestItem : MonoBehaviour, IInventoryItem
+public class TestItem : MonoBehaviour//, IInventoryItem
 {
     public string Name { get; } = "TestItem";
 

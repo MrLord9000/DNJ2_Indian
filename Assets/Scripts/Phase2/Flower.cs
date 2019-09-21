@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D),typeof(SpriteRenderer))]
-public class Flower : MonoBehaviour, IInventoryItem
+public class Flower : MonoBehaviour//, IInventoryItem
 {
 
     new private BoxCollider2D collider;
@@ -23,7 +23,7 @@ public class Flower : MonoBehaviour, IInventoryItem
             string path2 = "Sprites/Flowers/flower_" + color + "_2";       
             Sprite pic = Resources.Load<Sprite>( Random.Range(0,2) == 1 ? path1 : path2 ) ?? Resources.Load<Sprite>(path1);
             sRenderer.sprite = pic;
-            collider.size = new Vector3(pic.textureRect.width, pic.textureRect.height) / pic.pixelsPerUnit;
+            collider.size = new Vector3(pic.textureRect.width, pic.textureRect.height) / pic.pixelsPerUnit * 1.5f;
         }
     }
 
