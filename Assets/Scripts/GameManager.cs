@@ -8,30 +8,26 @@ public class GameManager : MonoBehaviour
 #pragma warning disable
     [SerializeField] GameObject player;
     [SerializeField] Inventory inventory;
-    [SerializeField] GameObject slotUIPrefab;
+    [Space]
+    [SerializeField] GameObject flowerPrefab;
+    [SerializeField] GameObject potionPrefab;
 #pragma warning restore
 
     private static GameManager instance;
 
     public static GameManager Instance
-    {
-        get => instance;
-    }
+    {   get => instance;    }
 
     public static Inventory Inventory
-    {
-        get => instance.inventory;
-    }
+    {   get => instance.inventory;    }
 
     public static GameObject Player
-    {
-        get => instance.player;
-    }
+    {   get => instance.player; }
+    public static GameObject FlowerPrefab
+    { get => instance.flowerPrefab; }
 
-    public static GameObject SlotUIPrefab
-    {
-        get => instance.slotUIPrefab;
-    }
+    public static GameObject PotionPrefab
+    {   get => instance.potionPrefab;    }
 
     private void Awake()
     {

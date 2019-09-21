@@ -22,8 +22,18 @@ public class TestItem : MonoBehaviour//, IInventoryItem
     [ContextMenu("SPEED!!!")]
     public void SPEED()
     {
-        PotionEffects.Invoke(PotionEffect.multiplication);
+        //PotionEffects.Invoke(PotionEffect.multiplication);
+        Potion potion = Instantiate(GameManager.PotionPrefab).GetComponent<Potion>();
+        potion.Set((PotionColor)counter);
+        potion.gameObject.SetActive(false);
+        GameManager.Inventory.AddPotion(potion);
+        Debug.Log(potion.Color);
+        counter++;
+        if (counter > 14)
+            counter = 0;
     }
+    int counter = 0;
+
 
     private void OnMouseDown()
     {

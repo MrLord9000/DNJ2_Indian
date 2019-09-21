@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
 #pragma warning disable
     public float speed = 1f;
-    [SerializeField] Inventory inventory;
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer indicator;
 #pragma warning restore
@@ -30,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         if (item != null)
         {
-            inventory.AddFlower(item);
+            GameManager.Inventory.AddFlower(item);
             Debug.Log("<color=green>Picked up " + item + "</color>");
             item = null;
         }
@@ -51,8 +50,8 @@ public class PlayerController : MonoBehaviour
         if (collision.GetComponent<Flower>() == item)
         {
             item = null;
-            indicator.enabled = false;
         }
+        indicator.enabled = false;
     }
 
     private void Update()
