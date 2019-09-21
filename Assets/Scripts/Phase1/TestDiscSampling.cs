@@ -6,6 +6,8 @@ public class TestDiscSampling : MonoBehaviour
 {
 	public GameObject flower;
 
+	public string colorGroup;
+
 	public float radius = 1;
 	public Vector2 regionSize = Vector2.one;
 	public Vector2 regionShift = Vector2.one;
@@ -27,10 +29,33 @@ public class TestDiscSampling : MonoBehaviour
     	}
     }*/
 
+    FlowerColor colorMyFlower(string colorGroup){
+    	float chanceForMix = Random.value;
+    	switch(colorGroup){
+    		case "red":
+    			if (chanceForMix<0.9f) return FlowerColor.red;
+    			else if(chanceForMix<0.95f) return FlowerColor.orange;
+    			else return FlowerColor.purple;
+    			break;
+    		case "yellow":
+    			if(chanceForMix<0.9f) return FlowerColor.yellow;
+    			else if(chanceForMix<0.95f) return FlowerColor.orange;
+    			else return FlowerColor.green;
+    			break;
+    		case "blue":
+    			if(chanceForMix<0.9f) return FlowerColor.blue;
+    			else if(chanceForMix<0.95f) return FlowerColor.green;
+    			else return FlowerColor.purple;
+    		default:
+    			 return FlowerColor.white;
+    	}
+    }
+
     void Start(){
     	OnValidate();
     	foreach(Vector2 point in points){
-    		Instantiate(flower,new Vector3(point.x,point.y,0f),Quaternion.identity);
+    		GameObject created_flower = Instantiate(flower,new Vector3(point.x,point.y,0f),Quaternion.identity);
+    		created_flower.GetComponent<Flower>().Color = colorMyFlower(colorGroup);
     	}
     }
 }
