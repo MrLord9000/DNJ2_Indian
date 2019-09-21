@@ -30,10 +30,18 @@ public class GameTimer : MonoBehaviour
         int timeLeft = lengthInSeconds;
         for (int i = 0; i < lengthInSeconds; i++)
         {
+            colorGrading.brightness.value = Mathf.Lerp(-50, 0, (float)timeLeft / (float)lengthInSeconds);
+            colorGrading.temperature.value = Mathf.Lerp(-20, 0, (float)timeLeft / (float)lengthInSeconds);
             DrawTime(timeLeft);
             timeLeft--;
             yield return new WaitForSeconds(1f);
         }
+        for (int i = 0; i < 50; i++)
+        {
+            colorGrading.brightness.value -= 1f;
+            yield return new WaitForSeconds(.1f);
+        }
+        yield return new WaitForSeconds(2f);
         OnPhaseEnd?.Invoke();
     }
 

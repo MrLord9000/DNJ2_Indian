@@ -15450,7 +15450,7 @@ MonoBehaviour:
   potionPrefab: {fileID: 3963196595629671084, guid: f75961c499af4a344b0efb099496cbdf,
     type: 3}
   areFlowersDraggable: 0
-  basePlayTime: 120
+  basePlayTime: 60
 --- !u!4 &1677666716
 Transform:
   m_ObjectHideFlags: 0
