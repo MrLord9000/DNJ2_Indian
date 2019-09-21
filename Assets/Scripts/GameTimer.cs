@@ -43,7 +43,7 @@ public class GameTimer : MonoBehaviour
             yield return new WaitForSeconds(.1f);
         }
         yield return new WaitForSeconds(2f);
-        OnPhaseEnd?.Invoke();
+        OnPhaseEnd.Invoke();
     }
 
     private void DrawTime(int time)

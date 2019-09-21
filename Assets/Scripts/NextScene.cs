@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SwitchToPhase2 : MonoBehaviour
+public class NextScene : MonoBehaviour
 {
     private void OnEnable()
     {
@@ -17,6 +17,7 @@ public class SwitchToPhase2 : MonoBehaviour
 
     private void NextPhase()
     {
-        SceneManager.LoadScene(2);
+        Debug.Log("Next Phase");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
