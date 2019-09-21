@@ -16,9 +16,12 @@ public class GameStartSequence : MonoBehaviour
 
     private IEnumerator Intro()
     {
-        for (int i = 0; i < 128; i++)
+        for (int i = -100; i <= 0; i++)
         {
-            yield return new WaitForSeconds(1f);
+            colorGrading.brightness.value = i;
+            yield return new WaitForSeconds(.05f);
         }
+        GameManager.Player.GetComponent<PlayerController>().hasControl = true;
+        GameManager.GameTimer.StartTimer();
     }
 }

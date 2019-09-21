@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private bool snapToInt = false;
 #pragma warning restore
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if(objectToTrack != null && !IsBetween(transform.position, objectToTrack.position, accuracy))
         {

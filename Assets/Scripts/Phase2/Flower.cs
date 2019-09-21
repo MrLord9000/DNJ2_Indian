@@ -68,35 +68,33 @@ public class Flower : MonoBehaviour//, IInventoryItem
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //TYMCZASOWE
-        GetComponent<SpriteRenderer>().color = color.GetColor();
-    }
-
-
     private void OnMouseDown()
     {
-        pos = transform.position;
+        if (GameManager.Instance.areFlowersDraggable)
+        {
+            pos = transform.position;
+        }
     }
 
     private void OnMouseUp()
     {
-        List<Collider2D> contacts = new List<Collider2D>();
-        collider.OverlapCollider( new ContactFilter2D(), contacts );
-       
-        foreach( Collider2D contatc in contacts )
+        if (GameManager.Instance.areFlowersDraggable)
         {
-            GameObject obj = contatc?.gameObject;
-            if ( obj?.GetComponent<ThePot>()?.AddFlower(this) ?? false )
+            List<Collider2D> contacts = new List<Collider2D>();
+            collider.OverlapCollider( new ContactFilter2D(), contacts );
+       
+            foreach( Collider2D contatc in contacts )
             {
-                //transform.position = obj.transform.position;
-                transform.position = pos;
-                return;
+                GameObject obj = contatc?.gameObject;
+                if ( obj?.GetComponent<ThePot>()?.AddFlower(this) ?? false )
+                {
+                    //transform.position = obj.transform.position;
+                    transform.position = pos;
+                    return;
+                }
             }
+            transform.position = pos;
         }
-        transform.position = pos;
     }
 
     public void OnPickup()
@@ -106,15 +104,13 @@ public class Flower : MonoBehaviour//, IInventoryItem
 
     private void OnMouseDrag()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position -= transform.position.z * Vector3.forward;
+        if (GameManager.Instance.areFlowersDraggable)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position -= transform.position.z * Vector3.forward;
+        }
     }
 
-    /*private void OnCollisionStay2D(Collision2D collision){
-        if(collision.gameObject.GetComponent<PlayerController>()==null){
-            Destroy(this);
-        }
-    }*/
 }
 
 public enum FlowerColor

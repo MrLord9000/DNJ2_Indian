@@ -24,6 +24,12 @@ public class Potion : MonoBehaviour//, IInventoryItem
     public void Set( Flower ingridient1, Flower ingridient2 )
     {
         color = PotionColorExtension.MixColor(ingridient1.Color, ingridient2.Color);
+        action = effectMap[color];
+    }
+    public void Set(PotionColor pc)
+    {
+        color = pc;
+        action = effectMap[color];
     }
 
     public PotionEffect Action
@@ -35,13 +41,12 @@ public class Potion : MonoBehaviour//, IInventoryItem
     {
         //???
     }
-    /*
-    public FlowerColor Color
+    public PotionColor Color
     {
         get => color;
         private set => color = value;
     }
-    */
+    
     public string Name
     {
         get => color.ToString() + " flower";

@@ -4,34 +4,36 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
 #pragma warning disable
+    [SerializeField] GameTimer gameTimer;
     [SerializeField] GameObject player;
     [SerializeField] Inventory inventory;
-    [SerializeField] GameObject slotUIPrefab;
+    [Space]
+    [SerializeField] GameObject flowerPrefab;
+    [SerializeField] GameObject potionPrefab;
 #pragma warning restore
+    public bool areFlowersDraggable;
+    public int basePlayTime = 120;
 
     private static GameManager instance;
 
+    public static GameTimer GameTimer
+    {   get => instance.gameTimer;   }
+
     public static GameManager Instance
-    {
-        get => instance;
-    }
+    {   get => instance;    }
 
     public static Inventory Inventory
-    {
-        get => instance.inventory;
-    }
+    {   get => instance.inventory;    }
 
     public static GameObject Player
-    {
-        get => instance.player;
-    }
+    {   get => instance.player; }
 
-    public static GameObject SlotUIPrefab
-    {
-        get => instance.slotUIPrefab;
-    }
+    public static GameObject FlowerPrefab
+    { get => instance.flowerPrefab; }
+
+    public static GameObject PotionPrefab
+    {   get => instance.potionPrefab;    }
 
     private void Awake()
     {

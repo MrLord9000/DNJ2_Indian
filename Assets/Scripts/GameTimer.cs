@@ -6,27 +6,34 @@ using TMPro;
 public class GameTimer : MonoBehaviour
 {
 #pragma warning disable
-    [SerializeField] float maxPlayTime = 30f;
     [SerializeField] TextMeshProUGUI displayText;
 #pragma warning restore
-
-    private float timeElapsed;
-    public float TimeElapsed { get => timeElapsed; }
 
     public delegate void PhaseOneEndAction();
     public static event PhaseOneEndAction OnPhaseEnd;
 
-    private void Update()
+    public void StartTimer()
     {
-        timeElapsed += Time.deltaTime;
-        if (timeElapsed > maxPlayTime)
-        {
-            OnPhaseEnd();
-        }
+        StartCoroutine(Timer(GameManager.Instance.basePlayTime));
+    }
 
+    public IEnumerator Timer(int lengthInSeconds)
+    {
+        int timeLeft = lengthInSeconds;
+        for (int i = 0; i < lengthInSeconds; i++)
+        {
+            DrawTime(timeLeft);
+            timeLeft--;
+            yield return new WaitForSeconds(1f);
+        }
+        OnPhaseEnd?.Invoke();
+    }
+
+    private void DrawTime(int time)
+    {
         if (displayText != null)
         {
-            displayText.text = timeElapsed.ToString();
+            displayText.text = (time/60) + ":" + (time%60);
         }
     }
 }

@@ -9,12 +9,14 @@ public class InventoryFlowers : MonoBehaviour
 #pragma warning disable
     [SerializeField] bool isFocused = false;
     [SerializeField] float focusTime = 4f;
-    [SerializeField] List<Button> uiSlots;
+    [SerializeField] List<Image> uiSlots;
     [SerializeField] Sprite emptySlotSprite;
 #pragma warning restore
 
     private int currentSlot = 0;
     private Vector2 nextPosition;
+
+    public List<Image> UiSlots { get => uiSlots; set => uiSlots = value; }
 
     private void OnEnable()
     {
@@ -34,7 +36,7 @@ public class InventoryFlowers : MonoBehaviour
     private void RefreshInventorySlots()
     {
         int i = 0;
-        foreach (var slot in uiSlots)
+        foreach (var slot in UiSlots)
         {
             if (i < GameManager.Inventory.slots)
             {
@@ -48,25 +50,22 @@ public class InventoryFlowers : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Update()
     {
-        uiSlots = GetComponentsInChildren<Button>().ToList();
-        Draw(null);
+        Draw(GameManager.Inventory.flowerItems);
     }
 
     public void Draw( List<Flower> list )
     {
         int n = (list?.Count ?? 0);
 
-        Debug.Log("aaa");
         for (int i = 0; i < n; i++)
         {
-            uiSlots[i].image.sprite = list[i].Image;
+            UiSlots[i].sprite = list[i].Image;
         }
-        for (int i = n; i < uiSlots.Count; i++)
+        for (int i = n; i < UiSlots.Count; i++)
         {
-            uiSlots[i].image.sprite = emptySlotSprite;
-            Debug.Log("cleared" + i);
+            UiSlots[i].sprite = emptySlotSprite;
         }
 
     }
