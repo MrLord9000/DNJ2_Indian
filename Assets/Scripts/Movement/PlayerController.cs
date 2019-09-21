@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 1f;
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer indicator;
+    public bool hasControl = true;
 #pragma warning restore
 
     private PlayerInput playerInput;
@@ -22,7 +23,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovement(InputAction.CallbackContext context)
     {
-        movement = context.ReadValue<Vector2>();
+        if (hasControl)
+        {
+            movement = context.ReadValue<Vector2>();
+        }
     }
 
     public void OnAction()

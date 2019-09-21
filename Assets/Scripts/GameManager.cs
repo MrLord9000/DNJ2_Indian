@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
 #pragma warning disable
+    [SerializeField] GameTimer gameTimer;
     [SerializeField] GameObject player;
     [SerializeField] Inventory inventory;
     [Space]
     [SerializeField] GameObject flowerPrefab;
     [SerializeField] GameObject potionPrefab;
 #pragma warning restore
+    public bool areFlowersDraggable;
+    public int basePlayTime = 120;
 
     private static GameManager instance;
+
+    public static GameTimer GameTimer
+    {   get => instance.gameTimer;   }
 
     public static GameManager Instance
     {   get => instance;    }
@@ -23,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public static GameObject Player
     {   get => instance.player; }
+
     public static GameObject FlowerPrefab
     { get => instance.flowerPrefab; }
 
