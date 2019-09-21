@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Dot
+  - PostProcessing
   layers:
   - Default
   - TransparentFX
