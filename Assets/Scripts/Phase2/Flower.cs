@@ -70,9 +70,7 @@ public class Flower : MonoBehaviour//, IInventoryItem
         List<Collider2D> results = new List<Collider2D>();
         collider.OverlapCollider( new ContactFilter2D().NoFilter(),results);
         foreach(Collider2D result in results){
-            Debug.Log("aaa");
             if(result.gameObject.GetComponent<PlayerController>()==null){
-                Debug.Log("bbb");
                 Destroy(result.gameObject);
             }
         }

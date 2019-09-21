@@ -3,103 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Linq;
 
 public class InventoryPotions : MonoBehaviour
 {
 #pragma warning disable
     [SerializeField] bool isFocused = false;
     [SerializeField] float focusTime = 4f;
-    [SerializeField] List<GameObject> uiSlots;
-    [SerializeField] Sprite frameSelected;
-    [SerializeField] Sprite frameUnselected;
+    [SerializeField] List<Button> uiSlots;
+    [SerializeField] Sprite emptySlotSprite;
+    [SerializeField] GameObject selectPointer;
 #pragma warning restore
 
     private int currentSlot = 0;
 
     private void Start()
     {
-        if(uiSlots == null)
-        {
-            uiSlots = new List<GameObject>(GetComponentsInChildren<GameObject>());
-        }
-        RefreshInventorySlots();
-        StartCoroutine(LoseFocusCoroutine());
+        uiSlots = GetComponentsInChildren<Button>().Reverse().ToList();
+        Draw(null,1);
+        //RefreshInventorySlots();
+        //StartCoroutine(LoseFocusCoroutine());
     }
-
-    private void RefreshInventorySlots()
+    public void Draw(List<Potion> list, int selected)
     {
-        int i = 0;
-        foreach (var slot in uiSlots)
+        int n = (list?.Count ?? 0);
+
+        selectPointer.transform.position = uiSlots[selected].transform.position;
+        
+        for (int i = 0; i < n; i++)
         {
-            if (i < GameManager.Inventory.slots)
-            {
-                slot.gameObject.SetActive(true);
-            }
-            else
-            {
-                slot.gameObject.SetActive(false);
-            }
-            i++;
+            uiSlots[i].image.sprite = list[i].Image;
+            uiSlots[i].image.color = list[i].Color.GetColor();
+        }
+        for (int i = n; i < uiSlots.Count; i++)
+        {
+            uiSlots[i].image.sprite = emptySlotSprite;
         }
     }
 
-    public void GetFocus()
-    {
-        isFocused = true;
-        GameManager.Inventory.potionItems[currentSlot].GetComponent<Image>().sprite = frameSelected;
-    }
 
-    public void LoseFocus()
-    {
-        isFocused = false;
-        GameManager.Inventory.potionItems[currentSlot].GetComponent<Image>().sprite = frameUnselected;
-    }
-
-    public void ChangeElement(InputAction.CallbackContext context)
-    {
-        float way = context.ReadValue<float>();
-        if (way == 1) NextElement();
-        else if (way == -1) PreviousElement();
-    }
-
-    public void NextElement()
-    {
-        if (isFocused)
-        {
-            if (currentSlot < GameManager.Inventory.slots)
-            {
-                currentSlot++;
-            }
-            else
-            {
-                currentSlot = 0;
-            }
-        }
-        else GetFocus();
-    }
-
-    public void PreviousElement()
-    {
-        if (isFocused)
-        {
-            if (currentSlot > 0)
-            {
-                currentSlot--;
-            }
-            else
-            {
-                currentSlot = GameManager.Inventory.slots;
-            }
-        }
-        else GetFocus();
-    }
-
-    private IEnumerator LoseFocusCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(focusTime);
-            LoseFocus();
-        }
-    }
 }

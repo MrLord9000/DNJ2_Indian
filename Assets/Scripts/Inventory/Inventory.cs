@@ -11,11 +11,35 @@ public class Inventory : MonoBehaviour
     public List<Flower> flowerItems = new List<Flower>();
     [Space]
     [Header("Potion Inventory")]
-    public int maxPotionSlots = 20;
+    public int potionSlots = 20;
     public List<Potion> potionItems = new List<Potion>();
+    InventoryPotions potionsGUI;
 
     public delegate void InventoryExtendAction();
     public static event InventoryExtendAction OnInventoryExtend;
+
+    private void Awake()
+    {
+        potionsGUI = FindObjectOfType<InventoryPotions>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            NextPotion();
+            potionsGUI.Draw(potionItems, selectedPotionIndex);
+        }
+        else if ( Input.GetKeyDown(KeyCode.I))
+        {
+            PrevPotion();
+            potionsGUI.Draw(potionItems, selectedPotionIndex);
+        }
+        else if (Input.GetKeyDown(KeyCode.O))
+        {
+            SelectedPotion?.Use();
+        }
+    }
 
     public void AddFlower(Flower flower)
     {
@@ -37,9 +61,10 @@ public class Inventory : MonoBehaviour
 
     public void AddPotion(Potion potion)
     {
-        if(potion != null)
+        if(potionItems.Count < potionSlots)
         {
             potionItems.Add(potion);
+            potionsGUI.Draw(potionItems,selectedPotionIndex);
         }
     }
 
@@ -65,6 +90,43 @@ public class Inventory : MonoBehaviour
         {
             slots += 1;
             OnInventoryExtend();
+        }
+    }
+
+
+    int selectedPotionIndex = 0;
+
+    bool NextPotion()
+    {
+        if (selectedPotionIndex < 19)
+        {
+            selectedPotionIndex++;
+            return true;
+        }
+        return false;
+    }
+    bool PrevPotion()
+    {
+        if (selectedPotionIndex > 0)
+        {
+            selectedPotionIndex--;
+            return true;
+        }
+        return false;
+    }
+
+    public Potion SelectedPotion
+    {
+        get
+        {
+            try
+            {
+                return potionItems[selectedPotionIndex];
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                return null;
+            }
         }
     }
 }

@@ -5,20 +5,31 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
 
-	[SerializeField] PotionEffect customerPotionEffect=(PotionEffect)Random.Range(0,15);
+    [SerializeField] PotionEffect customerPotionEffect;
 
-	int givePotion(Potion potionToSell){
-		if(customerPotionEffect==potionToSell.Action){
-			if((int)customerPotionEffect>11){
-				return 3;
+    private void Awake()
+    {
+        customerPotionEffect = (PotionEffect)Random.Range(0, 15);
+    }
+
+    public void GivePotion( Potion potionToSell ){
+
+		if( customerPotionEffect==potionToSell.Action )
+        {
+			if((int)customerPotionEffect>11)
+            {
+                GameManager.Bank += Random.Range(20, 31);
 			}
-			else if((int)customerPotionEffect>5){
-				return 2;
-			}
-			else{
-				return 1;
-			}
+			else if((int)customerPotionEffect>5)
+            {
+                GameManager.Bank += Random.Range(10, 21);
+            }
+			else
+            {
+                GameManager.Bank += Random.Range(5, 11);
+            }
 		}
-		else return 0;
+        Destroy(potionToSell.gameObject);
+        Destroy(gameObject);    
 	}
 }

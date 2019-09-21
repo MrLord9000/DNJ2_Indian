@@ -27,7 +27,6 @@ public class TestItem : MonoBehaviour
         potion.Set((PotionColor)counter);
         potion.gameObject.SetActive(false);
         GameManager.Inventory.AddPotion(potion);
-        Debug.Log(potion.Color);
         counter++;
         if (counter > 14)
             counter = 0;
