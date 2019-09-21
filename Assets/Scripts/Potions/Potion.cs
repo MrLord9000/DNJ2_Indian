@@ -42,7 +42,8 @@ public class Potion : MonoBehaviour//, IInventoryItem
 
     public void Use()
     {
-        Debug.Log(action + " potion");
+
+        GameManager.Player.GetComponent<PotionIcon>().Activate(color);
         switch (action)
         {
             case PotionEffect.speed:            GameManager.Instance.StartCoroutine(SpeedPotionEffect());            break;
@@ -51,7 +52,7 @@ public class Potion : MonoBehaviour//, IInventoryItem
             case PotionEffect.small:            GameManager.Instance.StartCoroutine(SmallPotionEffect());            break;
             case PotionEffect.multiplication:   GameManager.Instance.StartCoroutine(MultiplicationPotionEffect());   break;
             case PotionEffect.halucination:     GameManager.Instance.StartCoroutine(HalucinationPotionEffect());     break;
-            case PotionEffect.invis:            GameManager.Instance.StartCoroutine(InvisPotionEffect());            break;
+            case PotionEffect.invisibility:            GameManager.Instance.StartCoroutine(InvisPotionEffect());            break;
             case PotionEffect.confusion:        GameManager.Instance.StartCoroutine(ConfusionPotionEffect());        break;
             case PotionEffect.twist:            GameManager.Instance.StartCoroutine(TwistPotionEffect());            break;
             case PotionEffect.drunk:            GameManager.Instance.StartCoroutine(DrunkPotionEffect());            break;
@@ -125,7 +126,7 @@ public class Potion : MonoBehaviour//, IInventoryItem
         { PotionColor.black,    PotionEffect.small },
         { PotionColor.white,    PotionEffect.multiplication },
         { PotionColor.maroon,   PotionEffect.halucination },
-        { PotionColor.brown,    PotionEffect.invis },
+        { PotionColor.brown,    PotionEffect.invisibility },
         { PotionColor.cream,    PotionEffect.confusion },
         { PotionColor.navy,     PotionEffect.twist },
         { PotionColor.aqua,     PotionEffect.drunk },
@@ -142,24 +143,28 @@ public class Potion : MonoBehaviour//, IInventoryItem
         GameManager.Player.GetComponent<PlayerController>().speed *= 1.5f;
         yield return new WaitForSeconds(duration);
         GameManager.Player.GetComponent<PlayerController>().speed /= 1.5f;
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator SlowPotionEffect()
     {
         GameManager.Player.GetComponent<PlayerController>().speed *= 0.5f;
         yield return new WaitForSeconds(duration);
         GameManager.Player.GetComponent<PlayerController>().speed /= 0.5f;
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator LargePotionEffect()
     {
         GameManager.Player.transform.localScale *= 1.5f;
         yield return new WaitForSeconds(duration);
         GameManager.Player.transform.localScale /= 1.5f;
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator SmallPotionEffect()
     {
         GameManager.Player.transform.localScale *= 0.5f;
         yield return new WaitForSeconds(duration);
         GameManager.Player.transform.localScale /= 0.5f;
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
 
     static float range = 0.5f;
@@ -201,6 +206,8 @@ public class Potion : MonoBehaviour//, IInventoryItem
             GameManager.Destroy(obj);
         }
         phantoms.Clear();
+
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator HalucinationPotionEffect()
     {
@@ -218,23 +225,28 @@ public class Potion : MonoBehaviour//, IInventoryItem
             yield return new WaitForSeconds(.02f);
         }
         colorGrading.hueShift.value = 0;
+
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator InvisPotionEffect()
     {
         GameManager.Player.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(duration);
         GameManager.Player.GetComponent<SpriteRenderer>().enabled = true;
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator ConfusionPotionEffect()
     {
         //FX
         throw new System.NotImplementedException();
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator TwistPotionEffect()
     {
         Camera.main.transform.rotation = Quaternion.AngleAxis(180, Vector3.forward);
         yield return new WaitForSeconds(duration);
         Camera.main.transform.rotation = new Quaternion();
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
 
     static float force = 15;
@@ -250,32 +262,38 @@ public class Potion : MonoBehaviour//, IInventoryItem
             time += next;
             yield return new WaitForSeconds(next);
         }
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator BlackNWhitePotionEffect()
     {
         //FX
         throw new System.NotImplementedException();
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator RainPotionEffect()
     {
         //FX
         throw new System.NotImplementedException();
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator StrengthPotionEffect()
     {
         //inventory
         throw new System.NotImplementedException();
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator LevitationPotionEffect()
     {
         GameManager.Player.GetComponent<Collider2D>().enabled = false;
         yield return new WaitForSeconds(duration);
         GameManager.Player.GetComponent<Collider2D>().enabled = true;
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator PoisonPotionEffect()
     {
         //zmiana sceny
         throw new System.NotImplementedException();
+        GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     #endregion
 }
