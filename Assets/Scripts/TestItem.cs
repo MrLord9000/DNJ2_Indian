@@ -22,6 +22,6 @@ public class TestItem : MonoBehaviour, IInventoryItem
     [ContextMenu("SPEED!!!")]
     public void SPEED()
     {
-        PotionEffects.Invoke(PotionEffect.Speed);
+        PotionEffects.Invoke(PotionEffect.speed);
     }
 }
