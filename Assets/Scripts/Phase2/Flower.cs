@@ -2,17 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-public class Flower : MonoBehaviour
+[RequireComponent(typeof(BoxCollider2D),typeof(SpriteRenderer))]
+public class Flower : MonoBehaviour, IInventoryItem
 {
 
     new private BoxCollider2D collider;
+
     private Vector3 pos;
+    private SpriteRenderer sRenderer;
+
     [SerializeField] FlowerColor color;
+
     public FlowerColor Color
     {
         get => color;
         private set => color = value;
+    }
+
+    public string Name
+    {
+        get => Color.ToString() + " flower";
+    }
+
+    public Sprite Image
+    {
+        get => sRenderer.sprite;
+        set => sRenderer.sprite = value;
     }
 
     void OnValidate()
@@ -26,6 +41,7 @@ public class Flower : MonoBehaviour
     void Start()
     {
         collider = GetComponent<BoxCollider2D>();
+        sRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -57,6 +73,11 @@ public class Flower : MonoBehaviour
             }
         }
         transform.position = pos;
+    }
+
+    public void OnPickup()
+    {
+        gameObject.SetActive(false);
     }
 
     private void OnMouseDrag()

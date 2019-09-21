@@ -23,11 +23,13 @@ public class ThePot : MonoBehaviour
         if( slot1 == null )
         {
             slot1 = flower;
+            slot1.gameObject.SetActive(false);
             return true;
         }
         else if (slot2 == null)
         {
             slot2 = flower;
+            slot2.gameObject.SetActive(false);
             return true;
         }
         else
@@ -44,15 +46,21 @@ public class ThePot : MonoBehaviour
             return null;
         }
 
-        Instantiate(Phase2LevelManager.instance.PotionPrefab).GetComponent<Potion>().Set(slot1,slot2);
+        Potion potion = Instantiate(Phase2LevelManager.instance.PotionPrefab).GetComponent<Potion>();
+        potion.Set(slot1, slot2);
+        Destroy(slot1?.gameObject);
+        Destroy(slot2?.gameObject);
         slot1 = slot2 = null;
-        return new Potion();
+        return potion;
 
     }
 
-    [ContextMenu("Cancel")]
+
+    [ContextMenu("Cancel"),System.Obsolete]
     public void Cancel()
     {
+        slot1?.gameObject.SetActive(true);
+        slot2?.gameObject.SetActive(true);
 
     }
 

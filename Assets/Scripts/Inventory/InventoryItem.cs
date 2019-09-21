@@ -5,8 +5,10 @@ using UnityEngine;
 public interface IInventoryItem
 {
     string Name { get; }
-    Color Color { get; }
+    FlowerColor Color { get; }
     Sprite Image { get; }
+
+    GameObject gameObject { get; }
 
     void OnPickup();
 }

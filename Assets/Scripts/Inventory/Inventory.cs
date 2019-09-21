@@ -16,7 +16,7 @@ public class Inventory : ScriptableObject
         {
             items.Add(item);
             item.OnPickup();
-            Destroy((item as MonoBehaviour).gameObject);
+            //Destroy((item as MonoBehaviour).gameObject);
 
             ItemAdded?.Invoke(this, new InventoryEventArgs(item));
         }

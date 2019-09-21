@@ -7,8 +7,8 @@ public class TestItem : MonoBehaviour, IInventoryItem
     public string Name { get; } = "TestItem";
 
     [SerializeField]
-    private Color _Color = Color.red;
-    public Color Color { get { return _Color; } }
+    private FlowerColor _Color = FlowerColor.red;
+    public FlowerColor Color { get { return FlowerColor.red; } }
 
     [SerializeField]
     private Sprite _Image;
