@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9f82e938213ef4cb1b038cf48770ac, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  slots: 2
-  maxSlots: 9
+  slots: 7
+  maxFlowerSlots: 9
+  flowerItems: []
+  maxPotionSlots: 20
+  potionItems: []

@@ -15,31 +15,46 @@ public class Inventory : ScriptableObject
     public List<Potion> potionItems = new List<Potion>();
 
     public event System.EventHandler<InventoryEventArgs> ItemAdded;
+
     public delegate void InventoryExtendAction();
     public static event InventoryExtendAction OnInventoryExtend;
 
+    public delegate void AddFlowerAction();
+    public static event AddFlowerAction OnAddFlower;
+
+    public delegate void UsePotionAction();
+    public static event UsePotionAction OnUsePotion;
+
     public void AddFlower(Flower flower)
     {
-        if(flowerItems.Count < slots && !flowerItems.Contains(flower))
+        if(flowerItems.Count < slots)
         {
             flowerItems.Add(flower);
+            OnAddFlower();
             flower.OnPickup();
 
             ItemAdded?.Invoke(this, new InventoryEventArgs(flower));
         }
         else
         {
-            Debug.Log("<color=blue>The inventory is full</color>");
+            Debug.Log("<color=yellow>The flower inventory is full</color>");
         }
     }
 
-    public void AddPotion(Potion potion)
+    public void UsePotion(int i)
     {
+        Potion potion = potionItems[i];
         if (potionItems.Count < maxPotionSlots)
         {
             potionItems.Add(potion);
+            OnUsePotion();
+            potion.OnPickup();
 
-            //ItemAdded?.Invoke(this, new InventoryEventArgs(potion));
+            ItemAdded?.Invoke(this, new InventoryEventArgs(potion));
+        }
+        else
+        {
+            Debug.Log("<color=blue>The potion inventory is full</color>");
         }
     }
 
