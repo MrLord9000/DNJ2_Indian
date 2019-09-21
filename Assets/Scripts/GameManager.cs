@@ -5,25 +5,31 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 #pragma warning disable
-    [SerializeField] private GameObject player;
-    [SerializeField] private Inventory inventory;
+    [SerializeField] GameObject player;
+    [SerializeField] Inventory inventory;
+    [SerializeField] GameObject slotUIPrefab;
 #pragma warning restore
 
     private static GameManager instance;
 
-    public static GameManager GetInstance()
+    public static GameManager Instance
     {
-        return instance;
+        get => instance;
     }
 
-    public Inventory GetInventory()
+    public static Inventory Inventory
     {
-        return inventory;
+        get => instance.inventory;
     }
 
-    public GameObject GetPlayer()
+    public static GameObject Player
     {
-        return player;
+        get => instance.player;
+    }
+
+    public static GameObject SlotUIPrefab
+    {
+        get => instance.slotUIPrefab;
     }
 
     private void Awake()
