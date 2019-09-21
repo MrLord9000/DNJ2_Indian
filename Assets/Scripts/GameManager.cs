@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject potionPrefab;
 #pragma warning restore
     public bool areFlowersDraggable;
-    public int basePlayTime = 120;
+    public int basePlayTime = 30;
 
     private static GameManager instance;
 
