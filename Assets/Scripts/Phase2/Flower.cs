@@ -16,7 +16,7 @@ public class Flower : MonoBehaviour//, IInventoryItem
     public FlowerColor Color
     {
         get => color;
-        private set
+        set
         {
             color = value;
             string path1 = "Sprites/Flowers/flower_" + color + "_1";
@@ -48,11 +48,24 @@ public class Flower : MonoBehaviour//, IInventoryItem
 
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         collider = GetComponent<BoxCollider2D>();
         sRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        List<Collider2D> results = new List<Collider2D>();
+        collider.OverlapCollider( new ContactFilter2D().NoFilter(),results);
+        foreach(Collider2D result in results){
+            Debug.Log("aaa");
+            if(result.gameObject.GetComponent<PlayerController>()==null){
+                Debug.Log("bbb");
+                Destroy(result.gameObject);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -96,6 +109,12 @@ public class Flower : MonoBehaviour//, IInventoryItem
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position -= transform.position.z * Vector3.forward;
     }
+
+    /*private void OnCollisionStay2D(Collision2D collision){
+        if(collision.gameObject.GetComponent<PlayerController>()==null){
+            Destroy(this);
+        }
+    }*/
 }
 
 public enum FlowerColor
