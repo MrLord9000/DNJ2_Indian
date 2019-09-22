@@ -7,9 +7,14 @@ public class Customer : MonoBehaviour
 
     [SerializeField] PotionEffect customerPotionEffect;
 
+    //private AudioSource source;
+    //public AudioClip successSound;
+    //public AudioClip failureSound;
+
     private void Awake()
     {
         customerPotionEffect = (PotionEffect)Random.Range(0, 15);
+        //source = GetComponent<AudioSource>();
     }
 
     public void GivePotion( Potion potionToSell ){
@@ -28,7 +33,13 @@ public class Customer : MonoBehaviour
             {
                 GameManager.Bank += Random.Range(5, 11);
             }
+            //source.clip=succesSound;
+            //source.Play();
 		}
+        else{
+            //source.clip=failureSound;
+            //source.Play();
+        }
         Destroy(potionToSell.gameObject);
         Destroy(gameObject);    
 	}
