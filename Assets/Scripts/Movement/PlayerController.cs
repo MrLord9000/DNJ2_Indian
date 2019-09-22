@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 #pragma warning restore
 
     public DefaultControls inputActions;
+    public bool invertedControls;
 
     private PlayerInput playerInput;
     private Rigidbody2D rb;
@@ -45,10 +46,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovement(InputAction.CallbackContext context)
     {
-        Debug.Log("On movement");
         if (hasControl)
         {
             movement = context.ReadValue<Vector2>();
+            if (invertedControls)
+            {
+                movement = new Vector2(-movement.x, -movement.y);
+            }
         }
         else
         {
