@@ -18,7 +18,7 @@ public class HighligthCentre : MonoBehaviour
 
             oldH?.TurnOff();
             newH?.TurnOn();
-            GameManager.Instance.selectedFowerColor = newH?.color;
+            GameManager.Instance.selectedFlowerColor = newH?.color;
         }
 
 

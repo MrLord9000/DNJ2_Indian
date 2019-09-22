@@ -29,9 +29,9 @@ public class Potion : MonoBehaviour//, IInventoryItem
         //sRenderer.color = color.GetColor();
     }
 
-    public void Set( Flower2 ingridient1, Flower2 ingridient2 )
+    public void Set(FlowerColor ingridient1, FlowerColor ingridient2 )
     {
-        Color = PotionColorExtension.MixColor(ingridient1.Color, ingridient2.Color);
+        Color = PotionColorExtension.MixColor(ingridient1, ingridient2);
         action = effectMap[color];
     }
     public void Set(PotionColor pc)

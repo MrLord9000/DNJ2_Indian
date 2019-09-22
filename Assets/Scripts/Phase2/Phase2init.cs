@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Phase2init : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         Inventory inventory = FindObjectOfType<Inventory>();
         foreach (var elem in inventory.flowers)
@@ -17,5 +17,9 @@ public class Phase2init : MonoBehaviour
             potion.gameObject.SetActive(true);
         }
         FindObjectOfType<InventoryPotions>().Draw(inventory.potionItems,0);
+        foreach( Corner corner in GameManager.Instance.corners )
+        {
+            corner.Refresh();
+        }
     }
 }

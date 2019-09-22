@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class ThePot : MonoBehaviour
 {
-    private Flower2 slot1;
-    private Flower2 slot2;
+    [SerializeField] Color neutralColor;
+
+    private FlowerColor? slot1 = null;
+    private FlowerColor? slot2 = null;
 
     private BoxCollider2D collider;
 
@@ -15,18 +17,31 @@ public class ThePot : MonoBehaviour
         get => slot1 != null && slot2 != null;
     }
 
-    public bool AddFlower( Flower2 flower )
+    public bool AddFlower( FlowerColor flower )
     {
-        if( slot1 == null )
+        if ( --GameManager.Inventory.flowers[flower] < 0 )
+        {
+            GameManager.Inventory.flowers[flower] = 0;
+            return false;
+        }
+
+        foreach( Corner corner in GameManager.Instance.corners)
+        {
+            corner.Refresh();
+        }
+
+        if ( slot1 == null )
         {
             slot1 = flower;
-            slot1.gameObject.SetActive(false);
+            GetComponent<SpriteRenderer>().color = flower.GetColor();
             return true;
         }
         else if (slot2 == null)
         {
             slot2 = flower;
-            slot2.gameObject.SetActive(false);
+            GetComponent<SpriteRenderer>().color = neutralColor;
+            GameManager.Inventory.AddPotion(CreatePotion());
+            FindObjectOfType<InventoryPotions>().Draw(GameManager.Inventory.potionItems, 0);
             return true;
         }
         else
@@ -43,23 +58,17 @@ public class ThePot : MonoBehaviour
             return null;
         }
 
-        Potion potion = Instantiate(Phase2LevelManager.instance.PotionPrefab).GetComponent<Potion>();
-        potion.Set(slot1, slot2);
-        Destroy(slot1?.gameObject);
-        Destroy(slot2?.gameObject);
+        GameObject obj = Instantiate(GameManager.PotionPrefab);
+        DontDestroyOnLoad(obj);
+        obj.SetActive(false);
+        Potion potion = obj.GetComponent<Potion>();
+        potion.Set((FlowerColor)slot1, (FlowerColor)slot2);
         slot1 = slot2 = null;
         return potion;
 
     }
 
 
-    [ContextMenu("Cancel"),System.Obsolete]
-    public void Cancel()
-    {
-        slot1?.gameObject.SetActive(true);
-        slot2?.gameObject.SetActive(true);
-
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -70,10 +79,17 @@ public class ThePot : MonoBehaviour
 
     private void Update()
     {
-        Input.GetMouseButtonDown(0);
-        
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            FlowerColor? color = GameManager.Instance.selectedFlowerColor;
+            if( color != null )
+            {
+                AddFlower((FlowerColor)color);
+            }
+
+        }
 
     }
-
 
 }
