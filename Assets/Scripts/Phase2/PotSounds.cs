@@ -9,11 +9,11 @@ public class PotSounds : MonoBehaviour
 
     private void Update()
     {
-        if(thePot.slot1 != null || thePot.slot2 != null)
+        if((thePot.slot1 != null || thePot.slot2 != null) && audioSource.isPlaying == false)
         {
             audioSource.Play();
         }
-        else
+        else if (thePot.slot1 == null && thePot.slot2 == null)
         {
             audioSource.Pause();
         }

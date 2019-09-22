@@ -277,7 +277,7 @@ public class Potion : MonoBehaviour//, IInventoryItem
     }
     public IEnumerator RainPotionEffect()
     {
-        Camera.main.GetComponent<AudioSource>().clip = (AudioClip)Resources.Load("Sounds/Rain_fx.ogg");
+        Camera.main.GetComponent<AudioSource>().clip = (AudioClip)Resources.Load("Sounds/rain_fx.ogg");
         Camera.main.GetComponent<AudioSource>().Play();
         ColorGrading colorGrading = GameManager.Instance.GetComponent<PostProcessVolume>().profile.GetSetting<ColorGrading>();
         for (int i = 0; i < 64; i++)
