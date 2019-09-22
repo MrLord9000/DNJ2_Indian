@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     public List<Flower> flowerItems = new List<Flower>();
     [Space]
     [Header("Potion Inventory")]
-    public int potionSlots = 20;
+    public int potionSlots = 10;
     public List<Potion> potionItems = new List<Potion>();
     InventoryPotions potionsGUI;
 

@@ -61,7 +61,7 @@ public class InventoryFlowers : MonoBehaviour
 
         for (int i = 0; i < n; i++)
         {
-            UiSlots[i].sprite = list[i].Image;
+            UiSlots[i].sprite = Resources.Load<Sprite>( "Sprites/interface/bag_" + list[i].Color );
         }
         for (int i = n; i < UiSlots.Count; i++)
         {
