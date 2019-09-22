@@ -16,7 +16,7 @@ public class InventoryPotions : MonoBehaviour
     private GameObject selectPointer;
 #pragma warning restore
 
-    private void Start()
+    private void Awake()
     {
         selectPointer = new GameObject("SelectorPointer");
         selectPointer.transform.SetParent(transform);
@@ -32,17 +32,12 @@ public class InventoryPotions : MonoBehaviour
             }
         }
 
-        Debug.Log(uiSlots.Count);
         Draw(null,0);
-        //RefreshInventorySlots();
-        //StartCoroutine(LoseFocusCoroutine());
     }
     public void Draw(List<Potion> list, int selected)
     {
-        Debug.Log(list == null);
-        Debug.Log(uiSlots == null);
         int n = (list?.Count ?? 0);
-        
+        Debug.Log(n + " " + this + " " + selectPointer);
         selectPointer.transform.position = uiSlots[selected].transform.position;
 
         for (int i = 0; i < n; i++)

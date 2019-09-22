@@ -13,6 +13,7 @@ public class Customer : MonoBehaviour
 
     private void Awake()
     {
+        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/backgrounds/background_sc3_" + Random.Range(1, 6));
         customerPotionEffect = (PotionEffect)Random.Range(0, 15);
         //source = GetComponent<AudioSource>();
     }

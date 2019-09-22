@@ -28,20 +28,25 @@ public class PlayerController : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    public void Movement(InputAction.CallbackContext context)
+    public void OnMovement(InputAction.CallbackContext context)
     {
         if (hasControl)
         {
             movement = context.ReadValue<Vector2>();
         }
+        else
+        {
+            movement.Set(0, 0);
+        }
     }
 
-    public void Action()
+    public void OnAction()
     {
         if (item != null)
         {
+            animator.SetTrigger("ItemPick");
             GameManager.Inventory.AddFlower(item);
-            Debug.Log("<color=green>Picked up " + item + "</color>");
+            //Debug.Log("<color=green>Picked up " + item + "</color>");
             item = null;
             if(source.clip!=pickingFlower||(!source.isPlaying)){
                 source.clip=pickingFlower;
@@ -98,7 +103,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            animator.Play("Player_idle");
+            //animator.Play("Player_idle");
         }
 
     }

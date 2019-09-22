@@ -5,19 +5,21 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-	static GameObject pausePanel;
+	public GameObject pausePanel;
+    public Canvas gameUI;
 
-
-    public static void PauseTheGame(GameObject panel){
-    	if(Time.timeScale>0f){
-    		pausePanel=Instantiate(panel);
+    public void PauseTheGame(GameObject panel){
+        
+    	if(Time.timeScale > 0f)
+        {
+            pausePanel = Instantiate(panel, gameUI.transform);
     		pausePanel.SetActive(true);
     		Time.timeScale = 0f;
     	}
-    	else{
-    		pausePanel.SetActive(false);
-    		Destroy(pausePanel);
-    		Time.timeScale=1f;
-    	}
+    	//else{
+    	//	pausePanel.SetActive(false);
+    	//	Destroy(pausePanel);
+    	//	Time.timeScale=1f;
+    	//}
     }
 }

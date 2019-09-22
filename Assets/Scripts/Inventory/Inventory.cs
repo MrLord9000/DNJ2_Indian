@@ -13,7 +13,6 @@ public class Inventory : MonoBehaviour
     [Header("Potion Inventory")]
     public int potionSlots = 10;
     public List<Potion> potionItems = new List<Potion>();
-    InventoryPotions potionsGUI;
     public Dictionary<FlowerColor, int> flowers = new Dictionary<FlowerColor, int>()
     {
         { FlowerColor.yellow,   0 },
@@ -35,8 +34,6 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        potionsGUI = FindObjectOfType<InventoryPotions>();
-        DontDestroyOnLoad(this);
         DontDestroyOnLoad(this);
     }
 
@@ -46,12 +43,12 @@ public class Inventory : MonoBehaviour
         if (value == 1)
         {
             NextPotion();
-            potionsGUI.Draw(potionItems, selectedPotionIndex);
+            FindObjectOfType<InventoryPotions>().Draw(potionItems, selectedPotionIndex);
         }
         else if (value == -1)
         {
             PrevPotion();
-            potionsGUI.Draw(potionItems, selectedPotionIndex);
+            FindObjectOfType<InventoryPotions>().Draw(potionItems, selectedPotionIndex);
         }
     }
 
@@ -84,7 +81,7 @@ public class Inventory : MonoBehaviour
         {
             flowerItems.Add(flower);
             flower.OnPickup();
-            OnFlowerPick();
+            OnFlowerPick?.Invoke();
         }
         else
         {
@@ -102,7 +99,7 @@ public class Inventory : MonoBehaviour
         if(potionItems.Count < potionSlots)
         {
             potionItems.Add(potion);
-            potionsGUI.Draw(potionItems,selectedPotionIndex);
+            FindObjectOfType<InventoryPotions>().Draw(potionItems,selectedPotionIndex);
         }
     }
 

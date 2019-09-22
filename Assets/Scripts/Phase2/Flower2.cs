@@ -27,7 +27,7 @@ public class Flower2 : MonoBehaviour
     {
         
     }
-
+    /*
     private void OnMouseDown()
     {
         if (GameManager.Instance.areFlowersDraggable)
@@ -59,4 +59,5 @@ public class Flower2 : MonoBehaviour
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position -= transform.position.z * Vector3.forward;        
     }
+    */
 }
