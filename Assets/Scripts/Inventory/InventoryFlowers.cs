@@ -59,7 +59,7 @@ public class InventoryFlowers : MonoBehaviour
     public void Draw( List<Flower> list )
     {
         int n = (list?.Count ?? 0);
-
+        Debug.Log(list.Count);
         for (int i = 0; i < n; i++)
         {
             UiSlots[i].sprite = Resources.Load<Sprite>( "Sprites/interface/bag_" + list[i].Color );

@@ -37,7 +37,6 @@ public class InventoryPotions : MonoBehaviour
     public void Draw(List<Potion> list, int selected)
     {
         int n = (list?.Count ?? 0);
-        Debug.Log(n + " " + this + " " + selectPointer);
         selectPointer.transform.position = uiSlots[selected].transform.position;
 
         for (int i = 0; i < n; i++)

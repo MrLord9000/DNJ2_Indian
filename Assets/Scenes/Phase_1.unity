@@ -7255,56 +7255,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PixelPerfectCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
-        type: 3}
-      propertyPath: orthographic size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
-        type: 3}
-      propertyPath: m_ForceIntoRT
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
-        type: 3}
-      propertyPath: orthographic size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
-        type: 3}
-      propertyPath: m_ForceIntoRT
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.height
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7612921325567169916, guid: 7b766e233b3ea854ebffeefa3ff5b656,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7393,6 +7343,76 @@ PrefabInstance:
     - target: {fileID: 7612921325567169917, guid: 7b766e233b3ea854ebffeefa3ff5b656,
         type: 3}
       propertyPath: m_StretchFill
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_ForceIntoRT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_ForceIntoRT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.5803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.30588236
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612921325567169915, guid: 7b766e233b3ea854ebffeefa3ff5b656,
+        type: 3}
+      propertyPath: m_BackGroundColor.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4401824112532401382, guid: 7b766e233b3ea854ebffeefa3ff5b656,
@@ -17165,7 +17185,7 @@ MonoBehaviour:
     type: 3}
   corners: []
   areFlowersDraggable: 0
-  basePlayTime: 120
+  basePlayTime: 15
 --- !u!4 &1677666716
 Transform:
   m_ObjectHideFlags: 0
@@ -18286,6 +18306,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5914000305285262122, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: gameUI
+      value: 
+      objectReference: {fileID: 923208320}
     - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
       propertyPath: dirtStepSounds.Array.size
@@ -18632,11 +18657,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3172771157365358186, guid: fef98d1e132efbf49ae9d1f8f3c066c2,
         type: 3}
-    - target: {fileID: 5914000305285262122, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
-        type: 3}
-      propertyPath: gameUI
-      value: 
-      objectReference: {fileID: 923208320}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7bb20671b5ba1149a899e70cd7ce1f2, type: 3}
 --- !u!4 &1770974638 stripped

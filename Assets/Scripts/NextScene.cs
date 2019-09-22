@@ -27,6 +27,15 @@ public class NextScene : MonoBehaviour
         {
             DontDestroyOnLoad(potion);
         }
+        inventoty.flowerItems.Clear();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            NextPhase();
+        }
     }
 }

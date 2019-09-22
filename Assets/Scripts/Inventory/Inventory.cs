@@ -37,6 +37,13 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+
+        if (FindObjectsOfType<Inventory>().Length > 1)
+        {
+            Destroy(gameObject);
+            Debug.Log("-----------------------------------");
+            FindObjectOfType<InventoryPotions>().Draw(FindObjectOfType<Inventory>().potionItems,0);
+        }
     }
 
     public void ChangeSelection(CallbackContext context)
