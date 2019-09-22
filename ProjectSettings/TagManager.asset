@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dot
   - PostProcessing
+  - Bison
   layers:
   - Default
   - TransparentFX
