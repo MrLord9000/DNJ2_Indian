@@ -65,14 +65,16 @@ public class PlayerController : MonoBehaviour
         if (item != null)
         {
             animator.SetTrigger("ItemPick");
-            GameManager.Inventory.AddFlower(item);
-            //Debug.Log("<color=green>Picked up " + item + "</color>");
-            item = null;
-            if(source.clip!=pickingFlower||(!source.isPlaying)){
-                source.clip=pickingFlower;
-                source.volume=0.25f;
-                source.Play();
+            if(GameManager.Inventory.AddFlower(item)){
+               item = null;
+                if(source.clip!=pickingFlower||(!source.isPlaying)){
+                    source.clip=pickingFlower;
+                    source.volume=0.25f;
+                    source.Play();
+                } 
             }
+            //Debug.Log("<color=green>Picked up " + item + "</color>");
+            
         }
             
         else

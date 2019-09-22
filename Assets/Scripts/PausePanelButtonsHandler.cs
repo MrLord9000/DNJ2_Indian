@@ -11,8 +11,6 @@ public class PausePanelButtonsHandler : MonoBehaviour
     }
 
     public void MainMenu(GameObject pausePanel){
-    	Time.timeScale=1f;
-    	SceneManager.LoadScene(0);
-    	Destroy(pausePanel);
+        Application.Quit();
     }
 }
