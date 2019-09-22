@@ -13,8 +13,7 @@ public class Phase2init : MonoBehaviour
         }
         foreach( Potion potion in inventory.potionItems)
         {
-            potion.transform.position = new Vector3(1000, 1000, 1000);
-            potion.gameObject.SetActive(true);
+            potion.gameObject.SetActive(false);
         }
         FindObjectOfType<InventoryPotions>().Draw(inventory.potionItems,0);
         foreach( Corner corner in GameManager.Instance.corners )
