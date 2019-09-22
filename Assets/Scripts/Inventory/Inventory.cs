@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour
     };
 
     public int bank = 0;
+    public DefaultControls inputActions;
 
     public delegate void InventoryExtendAction();
     public static event InventoryExtendAction OnInventoryExtend;
@@ -34,9 +35,12 @@ public class Inventory : MonoBehaviour
     public delegate void FlowerPickAction();
     public static event FlowerPickAction OnFlowerPick;
 
-    private void Awake()
+    private void Start()
     {
+        //inputActions = GameManager.Player.GetComponent<PlayerController>().inputActions;
         DontDestroyOnLoad(this);
+        //inputActions.Player.InventoryScroll.performed += ChangeSelection;
+        //inputActions.Player.InventoryUse.performed += UseSelection;
     }
 
     public void ChangeSelection(CallbackContext context)
@@ -54,7 +58,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UseSelection()
+    public void UseSelection(CallbackContext context)
     {
         SelectedPotion?.Use();
     }
