@@ -305,6 +305,8 @@ MonoBehaviour:
   animator: {fileID: 466209084}
   indicator: {fileID: 2117587050}
   hasControl: 1
+  dirtStepSounds: []
+  pickingFlower: {fileID: 8300000, guid: 95513d3cba27c73438060d53780d7b6d, type: 3}
 --- !u!114 &6187529333182543447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +424,12 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
     m_ActionId: 5f05ace5-da5c-4fe7-9350-7010d2abc7d7
     m_ActionName: Player/InventoryScroll[/Keyboard/leftArrow,/Keyboard/rightArrow,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/rightStick/left]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_ActionId: a8bfbd13-331c-475f-9c1d-e24eb14518b6
+    m_ActionName: Player/InventoryUse[/Keyboard/f,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: XboxGamepad
   m_DefaultActionMap: 707c45f8-533b-467e-ab43-e9ce8ec94c97
