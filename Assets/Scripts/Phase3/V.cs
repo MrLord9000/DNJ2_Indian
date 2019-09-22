@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class V : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Sprite frame;
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        GameObject.Find("SelectorPointer").GetComponent<Image>().sprite = frame;
+        Inventory inventory = FindObjectOfType<Inventory>();
+        inventory.selectedPotionIndex = 0;
+        FindObjectOfType<InventoryPotions>().Draw(inventory.potionItems, 0);
+        //FindObjectOfType<X>().gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

@@ -237,6 +237,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1748735811801634046, guid: 15876e7ad00123a458d7b222de8d85e8,
+        type: 3}
+      propertyPath: selectPointerSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 93e35b8a646d7d1468124f8e1eaf3dd1,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15876e7ad00123a458d7b222de8d85e8, type: 3}
 --- !u!1 &460639995
@@ -646,7 +652,7 @@ GameObject:
   - component: {fileID: 738789161}
   - component: {fileID: 738789160}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -936,7 +942,8 @@ GameObject:
   - component: {fileID: 891490358}
   - component: {fileID: 891490360}
   - component: {fileID: 891490359}
-  m_Layer: 0
+  - component: {fileID: 891490361}
+  m_Layer: 5
   m_Name: x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1018,6 +1025,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &891490361
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891490357}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0
 --- !u!1 &1245695229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1214,8 @@ GameObject:
   - component: {fileID: 2002694866}
   - component: {fileID: 2002694868}
   - component: {fileID: 2002694867}
-  m_Layer: 0
+  - component: {fileID: 2002694869}
+  m_Layer: 5
   m_Name: v
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1214,6 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9783f30f9e5e7cb469da3d0b812e6366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frame: {fileID: 21300000, guid: d8fba37cd14d98d46890f8ed8834c4a9, type: 3}
 --- !u!212 &2002694868
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1263,3 +1298,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2002694869
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002694865}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0

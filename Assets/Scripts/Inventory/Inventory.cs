@@ -26,6 +26,8 @@ public class Inventory : MonoBehaviour
         { FlowerColor.black,    0 }
     };
 
+    public int bank = 0;
+
     public delegate void InventoryExtendAction();
     public static event InventoryExtendAction OnInventoryExtend;
 
@@ -129,7 +131,7 @@ public class Inventory : MonoBehaviour
     }
 
 
-    int selectedPotionIndex = 0;
+    public int selectedPotionIndex = 0;
 
     bool NextPotion()
     {

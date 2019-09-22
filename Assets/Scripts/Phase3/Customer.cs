@@ -6,6 +6,7 @@ public class Customer : MonoBehaviour
 {
 
     [SerializeField] PotionEffect customerPotionEffect;
+    private Inventory inventory;
 
     //private AudioSource source;
     //public AudioClip successSound;
@@ -13,6 +14,7 @@ public class Customer : MonoBehaviour
 
     private void Awake()
     {
+        inventory = FindObjectOfType<Inventory>();
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/backgrounds/background_sc3_" + Random.Range(1, 6));
         customerPotionEffect = (PotionEffect)Random.Range(0, 15);
         GameObject.Find("Icon").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/interface/effect_" + customerPotionEffect);
@@ -25,15 +27,15 @@ public class Customer : MonoBehaviour
         {
 			if((int)customerPotionEffect>11)
             {
-                GameManager.Bank += Random.Range(20, 31);
+                inventory.bank += Random.Range(20, 31);
 			}
 			else if((int)customerPotionEffect>5)
             {
-                GameManager.Bank += Random.Range(10, 21);
+                inventory.bank += Random.Range(10, 21);
             }
 			else
             {
-                GameManager.Bank += Random.Range(5, 11);
+                inventory.bank += Random.Range(5, 11);
             }
             //source.clip=succesSound;
             //source.Play();

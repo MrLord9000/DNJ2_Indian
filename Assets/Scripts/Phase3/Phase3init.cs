@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Phase3init : MonoBehaviour
 {
@@ -12,5 +13,6 @@ public class Phase3init : MonoBehaviour
             potion.gameObject.SetActive(false);
         }
         FindObjectOfType<InventoryPotions>().Draw(inventory.potionItems, 0);
+        GameObject.Find("Money").GetComponent<TextMeshProUGUI>().SetText(inventory.)
     }
 }

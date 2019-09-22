@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public FlowerColor? selectedFlowerColor;
     public Corner[] corners;
     [Space]
-    [SerializeField] int bank = 0;
 
 #pragma warning restore
     public bool areFlowersDraggable;
@@ -40,11 +39,6 @@ public class GameManager : MonoBehaviour
 
     public static GameObject PotionPrefab
     {   get => instance.potionPrefab;    }
-    public static int Bank
-    {
-        get => Instance.bank;
-        set => Instance.bank = value;
-    }
 
     private void Awake()
     {
