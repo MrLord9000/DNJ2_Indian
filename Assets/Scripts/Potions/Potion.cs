@@ -179,7 +179,7 @@ public class Potion : MonoBehaviour//, IInventoryItem
         {
             foreach( GameObject obj in phantoms )
             {
-                GameManager.Destroy(obj);
+                Destroy(obj);
             }
             phantoms.Clear();
 
@@ -190,7 +190,7 @@ public class Potion : MonoBehaviour//, IInventoryItem
                 float x = Random.Range(-1f, 1f);
                 float y = Random.Range(-1f, 1f);
                 float distance = Random.Range(0, range);
-                GameObject phantom = GameManager.Instantiate(GameManager.Player, new Vector2(x,y).normalized * distance, new Quaternion() );
+                GameObject phantom = Instantiate(GameManager.Player, new Vector2(x,y).normalized * distance, new Quaternion() );
                 x = Random.Range(-1f, 1f);
                 y = Random.Range(-1f, 1f);
                 phantom.GetComponent<PlayerController>().enabled = false;
@@ -204,7 +204,7 @@ public class Potion : MonoBehaviour//, IInventoryItem
 
         foreach (GameObject obj in phantoms)
         {
-            GameManager.Destroy(obj);
+            Destroy(obj);
         }
         phantoms.Clear();
 
@@ -239,8 +239,9 @@ public class Potion : MonoBehaviour//, IInventoryItem
     }
     public IEnumerator ConfusionPotionEffect()
     {
-        //FX
-        throw new System.NotImplementedException();
+        GameManager.Player.GetComponent<PlayerController>().invertedControls = true;
+        yield return new WaitForSeconds(duration);
+        GameManager.Player.GetComponent<PlayerController>().invertedControls = false;
         GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator TwistPotionEffect()
