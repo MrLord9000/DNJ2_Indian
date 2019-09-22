@@ -7,8 +7,8 @@ public class ThePot : MonoBehaviour
 {
     [SerializeField] Color neutralColor;
 
-    private FlowerColor? slot1 = null;
-    private FlowerColor? slot2 = null;
+    public FlowerColor? slot1 = null;
+    public FlowerColor? slot2 = null;
 
     private BoxCollider2D collider;
 
