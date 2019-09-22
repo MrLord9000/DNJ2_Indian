@@ -74,17 +74,19 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddFlower(Flower flower)
+    public bool AddFlower(Flower flower)
     {
         if(flowerItems.Count < slots)
         {
             flowerItems.Add(flower);
             flower.OnPickup();
             OnFlowerPick?.Invoke();
+            return true;
         }
         else
         {
             Debug.Log("<color=yellow>The flower inventory is full</color>");
+            return false;
         }
     }
 
