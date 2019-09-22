@@ -86,12 +86,24 @@ public class Inventory : MonoBehaviour
             catch(System.ArgumentOutOfRangeException)
             { }
             FindObjectOfType<Customer>().isReady = false;
-            StartCoroutine( X.Play(true) );
+            StartCoroutine( Play(true) );
 
             FindObjectOfType<InventoryPotions>().Draw(potionItems, selectedPotionIndex);
         }
         aaa:;
 
+    }
+
+    public static IEnumerator Play(bool end)
+    {
+        Debug.Log("KORUTYNAAAAA");
+        Animator anim = FindObjectOfType<Animator>();
+        anim.Play("IndianP3");
+
+        yield return new WaitForSeconds(5);
+
+        if (end)
+            SceneManager.LoadScene(1);
     }
 
     public bool AddFlower(Flower flower)
