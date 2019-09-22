@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour
     };
 
     public int bank = 0;
+    public DefaultControls inputActions;
 
     public delegate void InventoryExtendAction();
     public static event InventoryExtendAction OnInventoryExtend;
@@ -34,7 +35,7 @@ public class Inventory : MonoBehaviour
     public delegate void FlowerPickAction();
     public static event FlowerPickAction OnFlowerPick;
 
-    private void Awake()
+    private void Start()
     {
         DontDestroyOnLoad(this);
 
@@ -46,43 +47,32 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void ChangeSelection(CallbackContext context)
+
+    private void Update()
     {
-        float value = context.ReadValue<float>();
-        if (value == 1)
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             NextPotion();
             FindObjectOfType<InventoryPotions>().Draw(potionItems, selectedPotionIndex);
         }
-        else if (value == -1)
+        else if ( Input.GetKeyDown(KeyCode.LeftArrow))
         {
             PrevPotion();
             FindObjectOfType<InventoryPotions>().Draw(potionItems, selectedPotionIndex);
         }
-    }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            SelectedPotion?.Use();
+            try
+            {
+                potionItems.RemoveAt(selectedPotionIndex);
+            }
+            catch(System.ArgumentOutOfRangeException)
+            { }
 
-    public void UseSelection()
-    {
-        SelectedPotion?.Use();
+            FindObjectOfType<InventoryPotions>().Draw(potionItems, selectedPotionIndex);
+        }
     }
-
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.P))
-    //    {
-    //        NextPotion();
-    //        potionsGUI.Draw(potionItems, selectedPotionIndex);
-    //    }
-    //    else if ( Input.GetKeyDown(KeyCode.I))
-    //    {
-    //        PrevPotion();
-    //        potionsGUI.Draw(potionItems, selectedPotionIndex);
-    //    }
-    //    else if (Input.GetKeyDown(KeyCode.O))
-    //    {
-    //        SelectedPotion?.Use();
-    //    }
-    //}
 
     public void AddFlower(Flower flower)
     {

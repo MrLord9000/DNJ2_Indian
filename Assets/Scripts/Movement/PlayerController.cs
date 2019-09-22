@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public bool hasControl = true;
 #pragma warning restore
 
+    public DefaultControls inputActions;
+
     private PlayerInput playerInput;
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -22,6 +24,19 @@ public class PlayerController : MonoBehaviour
     public List<AudioClip> dirtStepSounds = new List<AudioClip>();
     public AudioClip pickingFlower;
 
+    private void Awake()
+    {
+        inputActions = new DefaultControls();
+        inputActions.Player.Movement.performed += OnMovement;
+        inputActions.Player.Action.performed += OnAction;
+    }
+
+    //private void OnDisable()
+    //{
+    //    inputActions.Player.Movement.performed -= OnMovement;
+    //    inputActions.Player.Action.performed -= OnAction;
+    //}
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovement(InputAction.CallbackContext context)
     {
+        Debug.Log("On movement");
         if (hasControl)
         {
             movement = context.ReadValue<Vector2>();
@@ -40,7 +56,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnAction()
+    public void OnAction(InputAction.CallbackContext contex)
     {
         if (item != null)
         {

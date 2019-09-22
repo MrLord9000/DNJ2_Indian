@@ -62,6 +62,7 @@ public class Potion : MonoBehaviour//, IInventoryItem
             case PotionEffect.levitation:       GameManager.Instance.StartCoroutine(LevitationPotionEffect());       break;
             case PotionEffect.poison:           GameManager.Instance.StartCoroutine(PoisonPotionEffect());           break;
         }
+        Destroy(gameObject);
     }
 
     public PotionEffect Action

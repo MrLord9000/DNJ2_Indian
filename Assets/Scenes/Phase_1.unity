@@ -17185,7 +17185,7 @@ MonoBehaviour:
     type: 3}
   corners: []
   areFlowersDraggable: 0
-  basePlayTime: 15
+  basePlayTime: 30
 --- !u!4 &1677666716
 Transform:
   m_ObjectHideFlags: 0
@@ -18346,6 +18346,11 @@ PrefabInstance:
       propertyPath: dirtStepSounds.Array.data[5]
       value: 
       objectReference: {fileID: 8300000, guid: a73cbeff70b091447971b278c0210df6, type: 3}
+    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6187529333182543443, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18573,7 +18578,7 @@ PrefabInstance:
     - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
@@ -18657,6 +18662,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3172771157365358186, guid: fef98d1e132efbf49ae9d1f8f3c066c2,
         type: 3}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7bb20671b5ba1149a899e70cd7ce1f2, type: 3}
 --- !u!4 &1770974638 stripped
