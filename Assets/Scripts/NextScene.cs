@@ -27,10 +27,6 @@ public class NextScene : MonoBehaviour
         {
             DontDestroyOnLoad(potion);
         }
-        foreach( var elem in inventoty.flowers)
-        {
-            Debug.Log(elem.Key + ": " + elem.Value);
-        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

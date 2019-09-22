@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject flowerPrefab;
     [SerializeField] GameObject potionPrefab;
     [Space]
-    public FlowerColor? selectedFowerColor;
+    public FlowerColor? selectedFlowerColor;
+    public Corner[] corners;
     [Space]
     [SerializeField] int bank = 0;
 
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        corners = FindObjectsOfType<Corner>();
         inventory = FindObjectOfType<Inventory>();
         if (instance == null)
         {
