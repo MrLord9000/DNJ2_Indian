@@ -72,7 +72,6 @@ public class Inventory : MonoBehaviour
             }
             else if (scene == "Phase_3" && FindObjectOfType<Customer>().isReady && SelectedPotion != null )
             {
-                Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 FindObjectOfType<Customer>().GivePotion(SelectedPotion);
             }
             else
@@ -86,6 +85,8 @@ public class Inventory : MonoBehaviour
             }
             catch(System.ArgumentOutOfRangeException)
             { }
+            FindObjectOfType<Customer>().isReady = false;
+            StartCoroutine( X.Play(true) );
 
             FindObjectOfType<InventoryPotions>().Draw(potionItems, selectedPotionIndex);
         }

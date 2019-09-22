@@ -7,6 +7,14 @@ public class V : MonoBehaviour
 {
     public Sprite frame;
 
+    private void Start()
+    {
+        if( FindObjectOfType<Inventory>().potionItems.Count == 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     private void OnMouseDown()
     {
         GameObject.Find("SelectorPointer").GetComponent<Image>().sprite = frame;
