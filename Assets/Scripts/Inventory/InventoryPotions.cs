@@ -12,11 +12,16 @@ public class InventoryPotions : MonoBehaviour
     [SerializeField] float focusTime = 4f;
     [SerializeField] List<Image> uiSlots;
     [SerializeField] Sprite emptySlotSprite;
-    [SerializeField] GameObject selectPointer;
+    [SerializeField] Sprite selectPointerSprite;
+    private GameObject selectPointer;
 #pragma warning restore
-    
+
     private void Start()
     {
+        selectPointer = new GameObject("SelectorPointer");
+        selectPointer.transform.SetParent(transform);
+        selectPointer.AddComponent<Image>().sprite = selectPointerSprite;
+        selectPointer.GetComponent<RectTransform>().localScale *= .6f;
         uiSlots = new List<Image>();
         IEnumerable<Image> images = GetComponentsInChildren<Image>().Skip(1).Reverse();
         foreach( Image image in images)

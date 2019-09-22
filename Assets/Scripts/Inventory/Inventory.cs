@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static UnityEngine.InputSystem.InputAction;
 
 public class Inventory : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     public List<Flower> flowerItems = new List<Flower>();
     [Space]
     [Header("Potion Inventory")]
-    public int potionSlots = 20;
+    public int potionSlots = 10;
     public List<Potion> potionItems = new List<Potion>();
     InventoryPotions potionsGUI;
 
@@ -23,23 +23,43 @@ public class Inventory : MonoBehaviour
         potionsGUI = FindObjectOfType<InventoryPotions>();
     }
 
-    private void Update()
+    public void ChangeSelection(CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        float value = context.ReadValue<float>();
+        if (value == 1)
         {
             NextPotion();
             potionsGUI.Draw(potionItems, selectedPotionIndex);
         }
-        else if ( Input.GetKeyDown(KeyCode.I))
+        else if (value == -1)
         {
             PrevPotion();
             potionsGUI.Draw(potionItems, selectedPotionIndex);
         }
-        else if (Input.GetKeyDown(KeyCode.O))
-        {
-            SelectedPotion?.Use();
-        }
     }
+
+    public void UseSelection()
+    {
+        SelectedPotion?.Use();
+    }
+
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.P))
+    //    {
+    //        NextPotion();
+    //        potionsGUI.Draw(potionItems, selectedPotionIndex);
+    //    }
+    //    else if ( Input.GetKeyDown(KeyCode.I))
+    //    {
+    //        PrevPotion();
+    //        potionsGUI.Draw(potionItems, selectedPotionIndex);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.O))
+    //    {
+    //        SelectedPotion?.Use();
+    //    }
+    //}
 
     public void AddFlower(Flower flower)
     {
