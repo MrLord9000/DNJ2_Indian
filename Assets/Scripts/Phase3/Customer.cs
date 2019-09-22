@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Customer : MonoBehaviour
 {
 
     [SerializeField] PotionEffect customerPotionEffect;
     private Inventory inventory;
+    public bool isReady = false;
 
     //private AudioSource source;
     //public AudioClip successSound;
@@ -45,6 +47,7 @@ public class Customer : MonoBehaviour
             //source.Play();
         }
         Destroy(potionToSell.gameObject);
-        Destroy(gameObject);    
-	}
+
+        SceneManager.LoadScene(1);
+    }
 }

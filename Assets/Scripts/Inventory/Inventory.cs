@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
@@ -62,7 +63,23 @@ public class Inventory : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F))
         {
-            SelectedPotion?.Use();
+            string scene = SceneManager.GetActiveScene().name;
+
+            if ( scene == "Phase_1" )
+            {
+                SelectedPotion?.Use();
+
+            }
+            else if (scene == "Phase_3" && FindObjectOfType<Customer>().isReady && SelectedPotion != null )
+            {
+                Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                FindObjectOfType<Customer>().GivePotion(SelectedPotion);
+            }
+            else
+            {
+                goto aaa;
+            }
+
             try
             {
                 potionItems.RemoveAt(selectedPotionIndex);
@@ -72,6 +89,8 @@ public class Inventory : MonoBehaviour
 
             FindObjectOfType<InventoryPotions>().Draw(potionItems, selectedPotionIndex);
         }
+        aaa:;
+
     }
 
     public void AddFlower(Flower flower)
