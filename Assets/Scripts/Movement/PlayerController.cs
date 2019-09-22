@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    public void OnMovement(InputAction.CallbackContext context)
+    public void Movement(InputAction.CallbackContext context)
     {
         if (hasControl)
         {
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnAction()
+    public void Action()
     {
         if (item != null)
         {

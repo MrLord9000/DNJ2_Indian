@@ -36,6 +36,11 @@ public class GameTimer : MonoBehaviour
             timeLeft--;
             yield return new WaitForSeconds(1f);
         }
+        StartCoroutine(EndPhase());
+    }
+
+    public IEnumerator EndPhase()
+    {
         GameManager.Player.GetComponent<PlayerController>().hasControl = false;
         for (int i = 0; i < 50; i++)
         {
