@@ -18,7 +18,7 @@ public class SceneFadeIn : MonoBehaviour
         for (int i = -100; i <= 0; i++)
         {
             colorGrading.brightness.value = i;
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.02f);
         }
     }
 }
