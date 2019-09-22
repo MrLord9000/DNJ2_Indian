@@ -15311,7 +15311,7 @@ MonoBehaviour:
     type: 3}
   bank: 0
   areFlowersDraggable: 0
-  basePlayTime: 60
+  basePlayTime: 15
 --- !u!4 &1677666716
 Transform:
   m_ObjectHideFlags: 0

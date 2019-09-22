@@ -19,11 +19,13 @@ public class Flower : MonoBehaviour//, IInventoryItem
         set
         {
             color = value;
-            string path1 = "Sprites/Flowers/flower_" + color + "_1";
-            string path2 = "Sprites/Flowers/flower_" + color + "_2";       
-            Sprite pic = Resources.Load<Sprite>( Random.Range(0,2) == 1 ? path1 : path2 ) ?? Resources.Load<Sprite>(path1);
-            sRenderer.sprite = pic;
-            collider.size = new Vector3(pic.textureRect.width, pic.textureRect.height) / pic.pixelsPerUnit * 1.5f;
+            {
+                string path1 = "Sprites/Flowers/flower_" + color + "_1";
+                string path2 = "Sprites/Flowers/flower_" + color + "_2";
+                Sprite pic = Resources.Load<Sprite>(Random.Range(0, 2) == 1 ? path1 : path2) ?? Resources.Load<Sprite>(path1);
+                sRenderer.sprite = pic;
+                collider.size = new Vector3(pic.textureRect.width, pic.textureRect.height) / pic.pixelsPerUnit * 1.5f;
+            }
         }
     }
 
@@ -47,16 +49,16 @@ public class Flower : MonoBehaviour//, IInventoryItem
         get => sRenderer.sprite;
         set => sRenderer.sprite = value;
     }
-
+    /*
     void OnValidate()
     {
         collider = GetComponent<BoxCollider2D>();
         sRenderer = GetComponent<SpriteRenderer>();
         //TYMCZASOWE
         //GetComponent<SpriteRenderer>().color = color.GetColor();
-        Color = color;
+        //Color = color;
 
-    }
+    }*/
 
     void Awake()
     {
@@ -76,47 +78,10 @@ public class Flower : MonoBehaviour//, IInventoryItem
         }
     }
 
-    private void OnMouseDown()
-    {
-        if (GameManager.Instance.areFlowersDraggable)
-        {
-            pos = transform.position;
-        }
-    }
-
-    private void OnMouseUp()
-    {
-        if (GameManager.Instance.areFlowersDraggable)
-        {
-            List<Collider2D> contacts = new List<Collider2D>();
-            collider.OverlapCollider( new ContactFilter2D(), contacts );
-       
-            foreach( Collider2D contatc in contacts )
-            {
-                GameObject obj = contatc?.gameObject;
-                if ( obj?.GetComponent<ThePot>()?.AddFlower(this) ?? false )
-                {
-                    //transform.position = obj.transform.position;
-                    transform.position = pos;
-                    return;
-                }
-            }
-            transform.position = pos;
-        }
-    }
 
     public void OnPickup()
     {
         gameObject.SetActive(false);
-    }
-
-    private void OnMouseDrag()
-    {
-        if (GameManager.Instance.areFlowersDraggable)
-        {
-            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position -= transform.position.z * Vector3.forward;
-        }
     }
 
 }

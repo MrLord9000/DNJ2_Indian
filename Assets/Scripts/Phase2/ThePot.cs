@@ -5,11 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class ThePot : MonoBehaviour
 {
-    private Flower slot1;
-    private Flower slot2;
-
-    private SpriteRenderer slotIndicator1;
-    private SpriteRenderer slotIndicator2;
+    private Flower2 slot1;
+    private Flower2 slot2;
 
     private BoxCollider2D collider;
 
@@ -18,7 +15,7 @@ public class ThePot : MonoBehaviour
         get => slot1 != null && slot2 != null;
     }
 
-    public bool AddFlower( Flower flower )
+    public bool AddFlower( Flower2 flower )
     {
         if( slot1 == null )
         {
@@ -69,16 +66,14 @@ public class ThePot : MonoBehaviour
     {
         collider = GetComponent<BoxCollider2D>();
         SpriteRenderer[] rend = GetComponentsInChildren<SpriteRenderer>();
-        // 0 is a Pot renderer
-        slotIndicator1 = rend[1];
-        slotIndicator2 = rend[2];
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        slotIndicator1.color = slot1?.Color.GetColor() ?? Color.clear;
-        slotIndicator2.color = slot2?.Color.GetColor() ?? Color.clear;
+        Input.GetMouseButtonDown(0);
+        
+
     }
+
 
 }
