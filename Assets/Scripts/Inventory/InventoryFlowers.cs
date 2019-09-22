@@ -52,6 +52,7 @@ public class InventoryFlowers : MonoBehaviour
 
     private void Update()
     {
+        RefreshInventorySlots();
         Draw(GameManager.Inventory.flowerItems);
     }
 
