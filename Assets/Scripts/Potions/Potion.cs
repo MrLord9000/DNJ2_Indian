@@ -231,9 +231,10 @@ public class Potion : MonoBehaviour//, IInventoryItem
     public IEnumerator InvisPotionEffect()
     {
         GameManager.Player.GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(duration);
-        GameManager.Player.GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(duration / 4);
         GameManager.Player.GetComponent<PotionIcon>().Deactivate();
+        yield return new WaitForSeconds(duration / 4 * 3);
+        GameManager.Player.GetComponent<SpriteRenderer>().enabled = true;
     }
     public IEnumerator ConfusionPotionEffect()
     {

@@ -17,15 +17,18 @@ public class InventoryPotions : MonoBehaviour
     
     private void Start()
     {
+        uiSlots = new List<Image>();
         IEnumerable<Image> images = GetComponentsInChildren<Image>().Skip(1).Reverse();
         foreach( Image image in images)
         {
             if( image.name.Contains("InventorySlot") )
             {
+            Debug.Log(image.name);
                 uiSlots.Add(image);
             }
         }
 
+        Debug.Log(uiSlots.Count);
         Draw(null,0);
         //RefreshInventorySlots();
         //StartCoroutine(LoseFocusCoroutine());
