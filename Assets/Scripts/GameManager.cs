@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject flowerPrefab;
     [SerializeField] GameObject potionPrefab;
     [Space]
+    public FlowerColor? selectedFowerColor;
+    [Space]
     [SerializeField] int bank = 0;
 
 #pragma warning restore
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        inventory = FindObjectOfType<Inventory>();
         if (instance == null)
         {
             instance = this;

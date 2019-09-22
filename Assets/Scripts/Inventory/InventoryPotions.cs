@@ -28,7 +28,6 @@ public class InventoryPotions : MonoBehaviour
         {
             if( image.name.Contains("InventorySlot") )
             {
-            Debug.Log(image.name);
                 uiSlots.Add(image);
             }
         }

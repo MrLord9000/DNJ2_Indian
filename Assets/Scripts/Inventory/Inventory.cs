@@ -14,6 +14,18 @@ public class Inventory : MonoBehaviour
     public int potionSlots = 10;
     public List<Potion> potionItems = new List<Potion>();
     InventoryPotions potionsGUI;
+    public Dictionary<FlowerColor, int> flowers = new Dictionary<FlowerColor, int>()
+    {
+        { FlowerColor.yellow,   0 },
+        { FlowerColor.red,      0 },
+        { FlowerColor.blue,     0 },
+        { FlowerColor.green,    0 },
+        { FlowerColor.pink,     0 },
+        { FlowerColor.orange,   0 },
+        { FlowerColor.purple,   0 },
+        { FlowerColor.white,    0 },
+        { FlowerColor.black,    0 }
+    };
 
     public delegate void InventoryExtendAction();
     public static event InventoryExtendAction OnInventoryExtend;
@@ -21,6 +33,8 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         potionsGUI = FindObjectOfType<InventoryPotions>();
+        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);
     }
 
     public void ChangeSelection(CallbackContext context)
