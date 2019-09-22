@@ -275,30 +275,55 @@ public class Potion : MonoBehaviour//, IInventoryItem
     }
     public IEnumerator RainPotionEffect()
     {
-        //FX
-        throw new System.NotImplementedException();
+        Camera.main.GetComponent<AudioSource>().clip = (AudioClip)Resources.Load("Sounds/Rain_fx.ogg");
+        Camera.main.GetComponent<AudioSource>().Play();
+        ColorGrading colorGrading = GameManager.Instance.GetComponent<PostProcessVolume>().profile.GetSetting<ColorGrading>();
+        for (int i = 0; i < 64; i++)
+        {
+            colorGrading.temperature.value = Mathf.Lerp(0, -50, (float)i / 64f);
+            colorGrading.brightness.value = Mathf.Lerp(0, -20, (float)i / 64f);
+            yield return new WaitForSeconds(.1f);
+        }
+        yield return new WaitForSeconds(duration);
+        for (int i = 0; i < 64; i++)
+        {
+            colorGrading.temperature.value = Mathf.Lerp(-50, 0, (float)i / 64f);
+            colorGrading.brightness.value = Mathf.Lerp(-20, 0, (float)i / 64f);
+            yield return new WaitForSeconds(.1f);
+        }
+
         GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator StrengthPotionEffect()
     {
-        //inventory
-        throw new System.NotImplementedException();
+        GameManager.Inventory.ExtendInventory();
+        yield return new WaitForSeconds(duration);
         GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator LevitationPotionEffect()
     {
         GameManager.Player.GetComponent<Collider2D>().enabled = false;
+        GameManager.Player.GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
+        GameManager.Player.GetComponent<Animator>().enabled = false;
         yield return new WaitForSeconds(duration);
         GameManager.Player.GetComponent<Collider2D>().enabled = true;
+        GameManager.Player.GetComponent<SpriteRenderer>().sortingLayerName = "Middleground";
+        GameManager.Player.GetComponent<Animator>().enabled = false;
         GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     public IEnumerator PoisonPotionEffect()
     {
-        //zmiana sceny
-        throw new System.NotImplementedException();
+        Inventory.OnFlowerPick += Poison;
+        yield return new WaitForSeconds(duration);
+        Inventory.OnFlowerPick -= Poison;
         GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     #endregion
+
+    private void Poison()
+    {
+        StartCoroutine(GameManager.GameTimer.EndPhase());
+    }
 }
 
 

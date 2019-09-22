@@ -29,6 +29,9 @@ public class Inventory : MonoBehaviour
     public delegate void InventoryExtendAction();
     public static event InventoryExtendAction OnInventoryExtend;
 
+    public delegate void FlowerPickAction();
+    public static event FlowerPickAction OnFlowerPick;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -78,6 +81,7 @@ public class Inventory : MonoBehaviour
         {
             flowerItems.Add(flower);
             flower.OnPickup();
+            OnFlowerPick();
         }
         else
         {

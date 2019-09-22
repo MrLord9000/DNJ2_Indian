@@ -27,7 +27,7 @@
                     "id": "5f05ace5-da5c-4fe7-9350-7010d2abc7d7",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": ""
                 },
                 {
                     "name": "InventoryUse",
@@ -230,7 +230,7 @@
                     "name": "InventoryScrollArrows",
                     "id": "44ee4229-78c9-4ded-93df-f9636a9004ee",
                     "path": "1DAxis",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=0.5)",
                     "processors": "",
                     "groups": "",
                     "action": "InventoryScroll",
@@ -255,39 +255,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardAndMouse",
-                    "action": "InventoryScroll",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "InventoryScrollAnalog",
-                    "id": "80b9cbe3-e385-4959-b0be-43f16cce9c73",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "InventoryScroll",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "e9059f7b-ec1b-4e18-943a-fbb81c40e3f9",
-                    "path": "<XInputController>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XboxGamepad",
-                    "action": "InventoryScroll",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "a6310e13-f466-447e-8da1-2b3f898605d0",
-                    "path": "<XInputController>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XboxGamepad",
                     "action": "InventoryScroll",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -335,6 +302,39 @@
                     "action": "InventoryUse",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "InventoryScrollAnalog",
+                    "id": "fdb31184-d3f7-4665-b2a7-01bc9c107990",
+                    "path": "1DAxis",
+                    "interactions": "Press(pressPoint=0.5)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InventoryScroll",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "08156417-d53e-489b-87a4-7f2fe7a06baa",
+                    "path": "<XInputController>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XboxGamepad",
+                    "action": "InventoryScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "ebf43ba8-9a47-43fe-a6e2-0e1aac6b8acc",
+                    "path": "<XInputController>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XboxGamepad",
+                    "action": "InventoryScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

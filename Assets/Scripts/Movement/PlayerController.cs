@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource source;
     public List<AudioClip> dirtStepSounds = new List<AudioClip>();
+    public AudioClip pickingFlower;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    public void OnMovement(InputAction.CallbackContext context)
+    public void Movement(InputAction.CallbackContext context)
     {
         if (hasControl)
         {
@@ -35,14 +36,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnAction()
+    public void Action()
     {
         if (item != null)
         {
             GameManager.Inventory.AddFlower(item);
             Debug.Log("<color=green>Picked up " + item + "</color>");
             item = null;
+            if(source.clip!=pickingFlower||(!source.isPlaying)){
+                source.clip=pickingFlower;
+                source.volume=0.25f;
+                source.Play();
+            }
         }
+            
         else
         {
             Debug.Log("<color=blue>No item in range!</color>");
@@ -75,6 +82,7 @@ public class PlayerController : MonoBehaviour
             animator.Play("Player_walk_front");
             if (!source.isPlaying){
                 source.clip=dirtStepSounds[Random.Range(0,dirtStepSounds.Count)];
+                source.volume=1f;
                 source.Play();
             }
             
@@ -84,6 +92,7 @@ public class PlayerController : MonoBehaviour
             animator.Play("Player_walk_back");
             if (!source.isPlaying){
                 source.clip=dirtStepSounds[Random.Range(0,dirtStepSounds.Count)];
+                source.volume=1f;
                 source.Play();
             }
         }
