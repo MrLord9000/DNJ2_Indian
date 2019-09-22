@@ -3598,6 +3598,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1768017618}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &466209078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5914000305285262122, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1768017618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466209077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f01190477a54774182aaa5e79e6e9ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &466209083 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
@@ -7136,7 +7148,7 @@ Transform:
   - {fileID: 1330803174}
   - {fileID: 2037093377}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &771565655
 PrefabInstance:
@@ -17583,6 +17595,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: dirtStepSounds.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: dirtStepSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 92df393063835a44b9c8ecba5484ea79, type: 3}
+    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: dirtStepSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d18844bfbd569846a76dac649ec2ac4, type: 3}
+    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: dirtStepSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9512ccad72c796546af247be7c25a53d, type: 3}
+    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: dirtStepSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: fdd0228ed72336d47a5edebc3919181c, type: 3}
+    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: dirtStepSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2104528e7f19b9344a542724825fc3cd, type: 3}
+    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: dirtStepSounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: a73cbeff70b091447971b278c0210df6, type: 3}
     - target: {fileID: 6187529333182543443, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17638,45 +17685,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
-        type: 3}
-      propertyPath: dirtStepSounds.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
-        type: 3}
-      propertyPath: dirtStepSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 92df393063835a44b9c8ecba5484ea79, type: 3}
-    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
-        type: 3}
-      propertyPath: dirtStepSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9d18844bfbd569846a76dac649ec2ac4, type: 3}
-    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
-        type: 3}
-      propertyPath: dirtStepSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9512ccad72c796546af247be7c25a53d, type: 3}
-    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
-        type: 3}
-      propertyPath: dirtStepSounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: fdd0228ed72336d47a5edebc3919181c, type: 3}
-    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
-        type: 3}
-      propertyPath: dirtStepSounds.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 2104528e7f19b9344a542724825fc3cd, type: 3}
-    - target: {fileID: 6187529333182543441, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
-        type: 3}
-      propertyPath: dirtStepSounds.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: a73cbeff70b091447971b278c0210df6, type: 3}
     - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
@@ -17696,6 +17708,11 @@ PrefabInstance:
     - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
@@ -17830,7 +17847,7 @@ PrefabInstance:
     - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Movement
+      value: OnMovement
       objectReference: {fileID: 0}
     - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
@@ -17855,7 +17872,7 @@ PrefabInstance:
     - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Action
+      value: OnAction
       objectReference: {fileID: 0}
     - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
         type: 3}
@@ -17877,6 +17894,58 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_TypeName
+      value: UnityEngine.InputSystem.PlayerInput+ActionEvent, Unity.InputSystem, Version=1.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: 13059c5a-b3c0-4f50-9193-c9ab1b0fd8ef
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: Player/Pause[/Keyboard/escape,/XInputControllerWindows/start]
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 466209078}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseTheGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187529333182543444, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 3172771157365358186, guid: fef98d1e132efbf49ae9d1f8f3c066c2,
+        type: 3}
+    - target: {fileID: 5914000305285262122, guid: a7bb20671b5ba1149a899e70cd7ce1f2,
+        type: 3}
+      propertyPath: gameUI
+      value: 
+      objectReference: {fileID: 923208320}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7bb20671b5ba1149a899e70cd7ce1f2, type: 3}
 --- !u!4 &1770974638 stripped
@@ -23058,7 +23127,7 @@ PrefabInstance:
     - target: {fileID: 6296218949012966059, guid: 47db98966bf4adc4eb37b3e3e45dab1e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6296218949012966059, guid: 47db98966bf4adc4eb37b3e3e45dab1e,
         type: 3}

@@ -84,7 +84,7 @@ public class Inventory : MonoBehaviour
         {
             flowerItems.Add(flower);
             flower.OnPickup();
-            OnFlowerPick();
+            OnFlowerPick?.Invoke();
         }
         else
         {
