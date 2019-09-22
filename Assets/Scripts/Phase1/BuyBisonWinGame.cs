@@ -25,6 +25,6 @@ public class BuyBisonWinGame : MonoBehaviour
             colorGrading.brightness.value = i;
             yield return new WaitForSeconds(.1f);
         }
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(4);
     }
 }
