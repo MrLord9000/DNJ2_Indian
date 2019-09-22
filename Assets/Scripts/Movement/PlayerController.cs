@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         item = collision.GetComponent<Flower>();
-        item.Highlight();
+        item?.Highlight();
         //indicator.enabled = true;
     }
 

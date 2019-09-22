@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 5914000305285262122}
   - component: {fileID: 6187529333182543441}
   - component: {fileID: 6187529333182543447}
+  - component: {fileID: 1573807661915531346}
   - component: {fileID: 6187529333182543440}
   - component: {fileID: 6187529333182543444}
   - component: {fileID: 466209084}
@@ -321,6 +322,7 @@ MonoBehaviour:
   animator: {fileID: 466209084}
   indicator: {fileID: 2117587050}
   hasControl: 1
+  invertedControls: 0
   dirtStepSounds: []
   pickingFlower: {fileID: 8300000, guid: 95513d3cba27c73438060d53780d7b6d, type: 3}
 --- !u!114 &6187529333182543447
@@ -336,6 +338,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 6187529333890395241}
+--- !u!114 &1573807661915531346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6187529333182543437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad104fa2772f7ad46a9647d321a527ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bisonPrefab: {fileID: 1115314598766079717, guid: 643ae4e415a614345b88e35dc15969b9,
+    type: 3}
 --- !u!61 &6187529333182543440
 BoxCollider2D:
   m_ObjectHideFlags: 0
