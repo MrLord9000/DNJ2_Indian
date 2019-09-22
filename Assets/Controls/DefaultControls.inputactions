@@ -23,11 +23,11 @@
                 },
                 {
                     "name": "InventoryScroll",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "5f05ace5-da5c-4fe7-9350-7010d2abc7d7",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 },
                 {
                     "name": "InventoryUse",
@@ -35,7 +35,7 @@
                     "id": "a8bfbd13-331c-475f-9c1d-e24eb14518b6",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
