@@ -25,6 +25,14 @@
                     "name": "InventoryScroll",
                     "type": "Button",
                     "id": "5f05ace5-da5c-4fe7-9350-7010d2abc7d7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "InventoryUse",
+                    "type": "Button",
+                    "id": "a8bfbd13-331c-475f-9c1d-e24eb14518b6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
@@ -283,6 +291,50 @@
                     "action": "InventoryScroll",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8bf17760-306b-4bf2-b85b-1051ea95f242",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "XboxGamepad",
+                    "action": "InventoryUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ed966c9-2260-4d63-87a3-10611ea8a7fe",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "XboxGamepad",
+                    "action": "InventoryUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "412d9dca-2c20-4919-bb40-15907ac96656",
+                    "path": "<Keyboard>/f",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
+                    "action": "InventoryUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d56f9a8d-a9aa-4d23-81d1-3504cb468475",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
+                    "action": "InventoryUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

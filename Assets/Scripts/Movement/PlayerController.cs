@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -16,9 +18,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private Flower item;
 
+    private AudioSource source;
+    public List<AudioClip> dirtStepSounds = new List<AudioClip>();
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        source = GetComponent<AudioSource>();
     }
 
     public void OnMovement(InputAction.CallbackContext context)
@@ -67,10 +73,19 @@ public class PlayerController : MonoBehaviour
         if (rb.velocity.x > .05f || rb.velocity.y < -.05f)
         {
             animator.Play("Player_walk_front");
+            if (!source.isPlaying){
+                source.clip=dirtStepSounds[Random.Range(0,dirtStepSounds.Count)];
+                source.Play();
+            }
+            
         }
         else if (rb.velocity.x < -.05f || rb.velocity.y > .05f)
         {
             animator.Play("Player_walk_back");
+            if (!source.isPlaying){
+                source.clip=dirtStepSounds[Random.Range(0,dirtStepSounds.Count)];
+                source.Play();
+            }
         }
         else
         {
