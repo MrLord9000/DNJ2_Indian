@@ -65,7 +65,7 @@ public class Inventory : MonoBehaviour
         {
             string scene = SceneManager.GetActiveScene().name;
 
-            if ( scene == "Phase_1" )
+            if ( scene == "Phase_1_main" )
             {
                 SelectedPotion?.Use();
 
@@ -88,9 +88,9 @@ public class Inventory : MonoBehaviour
             FindObjectOfType<Customer>().isReady = false;
             StartCoroutine( Play(true) );
 
-            FindObjectOfType<InventoryPotions>().Draw(potionItems, selectedPotionIndex);
         }
         aaa:;
+            FindObjectOfType<InventoryPotions>().Draw(potionItems, selectedPotionIndex);
 
     }
 

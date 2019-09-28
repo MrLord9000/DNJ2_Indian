@@ -5613,6 +5613,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2d226646a3442469e502f715ccce47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1515636506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515636504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f01190477a54774182aaa5e79e6e9ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 3172771157365358186, guid: fef98d1e132efbf49ae9d1f8f3c066c2,
+    type: 3}
+  gameUI: {fileID: 2039926622}
 --- !u!114 &1515636509
 MonoBehaviour:
   m_ObjectHideFlags: 0

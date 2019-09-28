@@ -10,7 +10,9 @@ public class GameStartSequence : MonoBehaviour
     void Start()
     {
         colorGrading = GameManager.Instance.GetComponent<PostProcessVolume>().profile.GetSetting<ColorGrading>();
-        GameManager.Player.GetComponent<PlayerController>().hasControl = false;
+        colorGrading.brightness.value = -100;
+        //GameManager.Player.GetComponent<PlayerController>().hasControl = false;
+        GameManager.GameTimer.StartTimer();
         StartCoroutine(Intro());
     }
 
@@ -21,7 +23,6 @@ public class GameStartSequence : MonoBehaviour
             colorGrading.brightness.value = i;
             yield return new WaitForSeconds(.05f);
         }
-        GameManager.Player.GetComponent<PlayerController>().hasControl = true;
-        GameManager.GameTimer.StartTimer();
+        //GameManager.Player.GetComponent<PlayerController>().hasControl = true;
     }
 }
