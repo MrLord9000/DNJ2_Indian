@@ -117,10 +117,9 @@ public static class PotionColorExtension
                 if (c2 == FlowerColor.black) return PotionColor.navy;
                 if (c2 == FlowerColor.white) return PotionColor.aqua;
             }
-            else if (c1 == FlowerColor.white)
+            else if (c1 == FlowerColor.black)
             {
-                if (c2 == FlowerColor.black) return PotionColor.navy;
-                if (c2 == FlowerColor.white) return PotionColor.aqua;
+                if (c2 == FlowerColor.white) return PotionColor.gray;
             }
         }
         else

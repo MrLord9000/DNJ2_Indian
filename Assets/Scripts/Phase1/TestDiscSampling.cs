@@ -47,7 +47,7 @@ public class TestDiscSampling : MonoBehaviour
     		case "black":
     			return FlowerColor.black;
     		case "white":
-    			if(chanceForMix<0.95f) return FlowerColor.pink;
+    			if(chanceForMix<0.7f) return FlowerColor.pink;
     			else return FlowerColor.white;
     		default:
     			 return FlowerColor.white;
