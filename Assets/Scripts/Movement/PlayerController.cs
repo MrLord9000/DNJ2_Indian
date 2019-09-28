@@ -102,8 +102,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        rb.AddForce(movement * speed);
-
         if (rb.velocity.x > .05f || rb.velocity.y < -.05f)
         {
             animator.Play("Player_walk_front");
@@ -128,5 +126,10 @@ public class PlayerController : MonoBehaviour
             //animator.Play("Player_idle");
         }
 
+    }
+
+    private void FixedUpdate()
+    {
+        rb.AddForce(movement * speed);
     }
 }
