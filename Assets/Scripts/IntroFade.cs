@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class IntroFade : MonoBehaviour
 {
+    public float fadeStepTime = 0.05f;
+
     public SpriteRenderer black;
     public SpriteRenderer screen1;
     public SpriteRenderer screen2;
@@ -23,35 +25,35 @@ public class IntroFade : MonoBehaviour
             Color screenColor = black.color;
             screenColor.a = Mathf.Lerp(1, 0, (float)i / 100f);
             black.color = screenColor;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(fadeStepTime);
         }
         for (int i = 0; i < 100; i++)
         {
             Color screenColor = screen1.color;
             screenColor.a = Mathf.Lerp(1, 0, (float)i / 100f);
             screen1.color = screenColor;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(fadeStepTime);
         }
         for (int i = 0; i < 100; i++)
         {
             Color screenColor = screen2.color;
             screenColor.a = Mathf.Lerp(1, 0, (float)i / 100f);
             screen2.color = screenColor;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(fadeStepTime);
         }
         for (int i = 0; i < 100; i++)
         {
             Color screenColor = screen3.color;
             screenColor.a = Mathf.Lerp(1, 0, (float)i / 100f);
             screen3.color = screenColor;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(fadeStepTime);
         }
         for (int i = 0; i < 100; i++)
         {
             Color screenColor = screen4.color;
             screenColor.a = Mathf.Lerp(1, 0, (float)i / 100f);
             screen4.color = screenColor;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(fadeStepTime);
         }
 
     }

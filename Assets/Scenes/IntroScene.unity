@@ -149,12 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5ca017d8ee42c43a72ae1df7b68394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeStepTime: 0.1
   black: {fileID: 1504245618}
   screen1: {fileID: 1298565288}
   screen2: {fileID: 1567683192}
   screen3: {fileID: 1056718832}
   screen4: {fileID: 1958377482}
-  postProcess: {fileID: 0}
 --- !u!4 &303563866
 Transform:
   m_ObjectHideFlags: 0

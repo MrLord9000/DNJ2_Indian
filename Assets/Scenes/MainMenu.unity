@@ -230,7 +230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000012159, y: -163.75}
+  m_AnchoredPosition: {x: -0.000012159, y: -127}
   m_SizeDelta: {x: 154.2, y: 46.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &309069702
@@ -496,8 +496,8 @@ MonoBehaviour:
     J\xF3\u017Awiak as The Padawan of Paintbrush\nAndrzej Miszczak as The Dauntless
     Artificer\nJ\u0119drzej Mrozowski as The Irrefutable Witness"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b33ceb3920c1f654c8490bbdfc5ee223, type: 2}
-  m_sharedMaterial: {fileID: -8442903055114319707, guid: b33ceb3920c1f654c8490bbdfc5ee223,
+  m_fontAsset: {fileID: 11400000, guid: ffd007d638a44a443beabd11c6461b89, type: 2}
+  m_sharedMaterial: {fileID: -1248774009547615809, guid: ffd007d638a44a443beabd11c6461b89,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_textAlignment: 257
+  m_textAlignment: 514
   m_characterSpacing: 7
   m_wordSpacing: 0
   m_lineSpacing: 70
@@ -612,8 +612,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000012159, y: 28.7}
-  m_SizeDelta: {x: 838, y: 296.3}
+  m_AnchoredPosition: {x: 0.000024319, y: 93.4}
+  m_SizeDelta: {x: 1920, y: 425.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &825102601
 GameObject:
