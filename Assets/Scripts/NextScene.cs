@@ -15,7 +15,7 @@ public class NextScene : MonoBehaviour
         GameTimer.OnPhaseEnd -= NextPhase;
     }
 
-    private void NextPhase()
+    public void NextPhase()
     {
         Debug.Log("Next Phase");
         Inventory inventoty = FindObjectOfType<Inventory>();

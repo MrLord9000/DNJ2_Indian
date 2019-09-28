@@ -14,7 +14,7 @@ public class Corner : MonoBehaviour
     private void Awake()
     {
         ingridients = GetComponentsInChildren<Flower2>().ToList();
-        Debug.Log(color + " - " + ingridients.Count);
+        //Debug.Log(color + " - " + ingridients.Count);
         collider2D = GetComponent<Collider2D>();
         sRenderer = GetComponent<SpriteRenderer>();
         sRenderer.color = color.GetColor();
@@ -28,7 +28,7 @@ public class Corner : MonoBehaviour
     public void Refresh()
     {
         int number = GameManager.Inventory.flowers[color];
-        Debug.Log(color + ": " + number + " - " + ingridients.Count);
+        //Debug.Log(color + ": " + number + " - " + ingridients.Count);
         for (int i = 0; i < number; i++)
         {
             ingridients[i].gameObject.SetActive(true);

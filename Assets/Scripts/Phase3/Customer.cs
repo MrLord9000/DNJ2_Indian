@@ -46,8 +46,5 @@ public class Customer : MonoBehaviour
             //source.clip=failureSound;
             //source.Play();
         }
-        Destroy(potionToSell.gameObject);
-
-        SceneManager.LoadScene(1);
     }
 }

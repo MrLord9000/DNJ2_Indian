@@ -52,7 +52,7 @@ public class Potion : MonoBehaviour//, IInventoryItem
             case PotionEffect.small:            GameManager.Instance.StartCoroutine(SmallPotionEffect());            break;
             case PotionEffect.multiplication:   GameManager.Instance.StartCoroutine(MultiplicationPotionEffect());   break;
             case PotionEffect.halucination:     GameManager.Instance.StartCoroutine(HalucinationPotionEffect());     break;
-            case PotionEffect.invisibility:            GameManager.Instance.StartCoroutine(InvisPotionEffect());            break;
+            case PotionEffect.invisibility:     GameManager.Instance.StartCoroutine(InvisPotionEffect());            break;
             case PotionEffect.confusion:        GameManager.Instance.StartCoroutine(ConfusionPotionEffect());        break;
             case PotionEffect.twist:            GameManager.Instance.StartCoroutine(TwistPotionEffect());            break;
             case PotionEffect.drunk:            GameManager.Instance.StartCoroutine(DrunkPotionEffect());            break;
@@ -310,9 +310,19 @@ public class Potion : MonoBehaviour//, IInventoryItem
         yield return new WaitForSeconds(duration);
         GameManager.Player.GetComponent<Collider2D>().enabled = true;
         GameManager.Player.GetComponent<SpriteRenderer>().sortingLayerName = "Middleground";
-        GameManager.Player.GetComponent<Animator>().enabled = false;
+        GameManager.Player.GetComponent<Animator>().enabled = true;
         GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
+
+    public IEnumerator PoisonPotionEffect()
+    {
+        yield return new WaitForSeconds(3);
+        new NextScene().NextPhase();
+    }
+    #endregion
+
+
+    /*
     public IEnumerator PoisonPotionEffect()
     {
         Inventory.OnFlowerPick += Poison;
@@ -321,11 +331,11 @@ public class Potion : MonoBehaviour//, IInventoryItem
         GameManager.Player.GetComponent<PotionIcon>().Deactivate();
     }
     #endregion
-
+    
     private void Poison()
     {
         StartCoroutine(GameManager.GameTimer.EndPhase());
-    }
+    }*/
 }
 
 

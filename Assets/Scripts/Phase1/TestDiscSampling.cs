@@ -36,12 +36,10 @@ public class TestDiscSampling : MonoBehaviour
     			if (chanceForMix<0.9f) return FlowerColor.red;
     			else if(chanceForMix<0.95f) return FlowerColor.orange;
     			else return FlowerColor.purple;
-    			break;
     		case "yellow":
     			if(chanceForMix<0.9f) return FlowerColor.yellow;
     			else if(chanceForMix<0.95f) return FlowerColor.orange;
     			else return FlowerColor.green;
-    			break;
     		case "blue":
     			if(chanceForMix<0.9f) return FlowerColor.blue;
     			else if(chanceForMix<0.95f) return FlowerColor.green;

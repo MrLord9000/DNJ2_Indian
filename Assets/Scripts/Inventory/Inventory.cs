@@ -73,6 +73,7 @@ public class Inventory : MonoBehaviour
             else if (scene == "Phase_3" && FindObjectOfType<Customer>().isReady && SelectedPotion != null )
             {
                 FindObjectOfType<Customer>().GivePotion(SelectedPotion);
+                StartCoroutine(Play(true));
             }
             else
             {
@@ -85,8 +86,6 @@ public class Inventory : MonoBehaviour
             }
             catch(System.ArgumentOutOfRangeException)
             { }
-            FindObjectOfType<Customer>().isReady = false;
-            StartCoroutine( Play(true) );
 
         }
         aaa:;
@@ -101,6 +100,7 @@ public class Inventory : MonoBehaviour
         anim.Play("IndianP3");
 
         yield return new WaitForSeconds(5);
+        Debug.Log("222");
 
         if (end)
             SceneManager.LoadScene(1);
